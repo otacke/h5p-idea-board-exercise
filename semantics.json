@@ -223,6 +223,24 @@
         "default": "Going to next content is currently not possible."
       },
       {
+        "name": "exitFullscreen",
+        "type": "text",
+        "label": "Exit fullscreen",
+        "default": "Exit fullscreen mode."
+      },
+      {
+        "name": "enterFullscreen",
+        "type": "text",
+        "label": "Enter fullscreen",
+        "default": "Enter fullscreen mode."
+      },
+      {
+        "name": "fullScreenDisabled",
+        "type": "text",
+        "label": "Fullscreen disabled",
+        "default": "Going to fullscreen is currently not possible."
+      },
+      {
         "name": "movedTo",
         "type": "text",
         "label": "Moved to page",

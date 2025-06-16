@@ -104,6 +104,18 @@
           "default": "Going to next content is currently not possible."
         },
         {
+          "label": "Exit fullscreen",
+          "default": "Exit fullscreen mode."
+        },
+        {
+          "label": "Enter fullscreen",
+          "default": "Enter fullscreen mode."
+        },
+        {
+          "label": "Fullscreen disabled",
+          "default": "Going to fullscreen is currently not possible."
+        },
+        {
           "label": "Moved to page",
           "default": "Moved to page @current of @total.",
           "description": "@current and @total are placeholders and will be replaced by the respective values."

@@ -104,6 +104,18 @@
           "default": "Zum nächsten Inhalt zu gehen ist derzeit nicht möglich."
         },
         {
+          "label": "Vollbildmodus beenden",
+          "default": "Vollbildmodus beenden."
+        },
+        {
+          "label": "Vollbildmodus aktivieren",
+          "default": "Vollbildmodus aktivieren."
+        },
+        {
+          "label": "Vollbildmodus deaktiviert",
+          "default": "Vollbildmodus ist derzeit nicht möglich."
+        },
+        {
           "label": "Zu Seite gewechselt",
           "default": "Zu Seite @current von @total gewechselt.",
           "description": "@current und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt."
