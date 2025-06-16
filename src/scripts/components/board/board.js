@@ -308,12 +308,4 @@ export default class Board {
   getXAPIData() {
     return this.instance.getXAPIData();
   }
-
-  /**
-   * Get the current state of the board.
-   * @returns {object} Current state of the board.
-   */
-  getCurrentState() {
-    return this.instance.getCurrentState();
-  }
 }
