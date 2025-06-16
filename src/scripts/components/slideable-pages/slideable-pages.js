@@ -47,10 +47,19 @@ export default class SlideablePages {
     return dom;
   }
 
+  /**
+   * Get the DOM element of the slideable pages.
+   * @returns {HTMLElement} The DOM element of the slideable pages.
+   */
   getDOM() {
     return this.dom;
   }
 
+  /**
+   * Get page at index.
+   * @param {number} index Index of the page.
+   * @returns {SlideablePage|null} The page at the given index, or null if out of bounds.
+   */
   getPageAtIndex(index) {
     if (index < 0 || index >= this.pages.length) {
       return null; // Out of bounds
@@ -67,10 +76,18 @@ export default class SlideablePages {
     return this.currentPageIndex;
   }
 
+  /**
+   * Get the number of pages.
+   * @returns {number} Number of pages.
+   */
   getLength() {
     return this.pages.length;
   }
 
+  /**
+   * Toggle slide effect.
+   * @param {boolean} [shouldBeOn] If true, enable slide effect, else plain transition.
+   */
   toggleSlideEffect(shouldBeOn) {
     if (typeof shouldBeOn !== 'boolean') {
       shouldBeOn = !this.hasSlideEffect;
@@ -85,6 +102,12 @@ export default class SlideablePages {
     }
   }
 
+  /**
+   * Go to page.
+   * @param {number} [to] Page number to go to.
+   * @param {object} [options] Options.
+   * @param {boolean} [options.skipFocus] If true, skip focus after going to page.
+   */
   goTo(to, options = {}) {
     if (to < 0 || to >= this.pages.length) {
       return; // Out of bounds
@@ -231,12 +254,19 @@ export default class SlideablePages {
     this.params.globals.get('resize')();
   }
 
+  /**
+   * Get the current state of the slideable pages.
+   * @returns {object} Current state.
+   */
   getCurrentState() {
     return {
       pages: this.pages.map((page) => page.getCurrentState())
     };
   }
 
+  /**
+   * Reset all pages to their initial state.
+   */
   reset() {
     this.pages.forEach((page) => {
       page.reset();

@@ -2,6 +2,14 @@ import { callOnceVisible, extend } from '@services/util.js';
 
 export default class Board {
 
+  /**
+   * @class
+   * @param {object} [params] Parameters for the board.
+   * @param {object} [params.boardParams] Parameters for the board.
+   * @param {object} [params.globals] Global parameters and functions.
+   * @param {object} [callbacks] Callbacks for events.
+   * @param {function} [callbacks.onCompleted] Callback when the board is completed.
+   */
   constructor(params = {}, callbacks = {}) {
     this.params = params;
     this.callbacks = extend({
@@ -37,6 +45,10 @@ export default class Board {
     return this.params.boardParams.scoreForCompletion || 0;
   }
 
+  /**
+   * Check if the board has an answer given.
+   * @returns {boolean} True if an answer has been given, else false.
+   */
   getAnswerGiven() {
     return this.instance?.getAnswerGiven?.() || false;
   }
@@ -81,6 +93,10 @@ export default class Board {
     });
   }
 
+  /**
+   * Build the board instance.
+   * @param {object} [previousState] Previous state to restore.
+   */
   buildInstance(previousState = {}) {
     this.instance = H5P.newRunnable(
       this.params.boardParams.boardGroup.ideaBoard,
@@ -120,18 +136,34 @@ export default class Board {
     });
   }
 
+  /**
+   * Get the DOM of the board.
+   * @returns {HTMLElement} DOM of the board.
+   */
   getDOM() {
     return this.dom;
   }
 
+  /**
+   * Get the DOM of the task description.
+   * @returns {HTMLElement} DOM of the task description.
+   */
   getTaskDescriptionDOM() {
     return this.taskDescriptionDOM;
   }
 
+  /**
+   * Get the current state of the board when no answer has been given.
+   * @returns {object} Current state of the board.
+   */
   getCurrentState() {
     return this.instance.getCurrentStateWhenNoAnswerGiven();
   }
 
+  /**
+   * Rebuild the instance with the previous state.
+   * @param {object} [previousState] Previous state to restore.
+   */
   rebuildInstance(previousState = {}) {
     delete this.instance;
     this.isAttached = false;
@@ -139,6 +171,9 @@ export default class Board {
     this.attachInstance();
   }
 
+  /**
+   * Attach the instance to the DOM.
+   */
   attachInstance() {
     if (this.isAttached) {
       return; // Already attached. Listeners would go missing on re-attaching.
@@ -166,6 +201,10 @@ export default class Board {
     return true;
   }
 
+  /**
+   * Get the first focusable child element.
+   * @returns {HTMLElement|null} First focusable child element or null if none found.
+   */
   getFirstFocusableChild() {
     const focusableElementsString = [
       '.h5p-idea-board-element-interactor'
@@ -179,6 +218,10 @@ export default class Board {
       .shift();
   }
 
+  /**
+   * Track completion events for the instance.
+   * @param {object} instance The instance to track events for.
+   */
   trackCompletionEvents(instance) {
     ['edited', 'added'].forEach((eventName) => {
       instance.on(eventName, (event) => {
@@ -195,6 +238,9 @@ export default class Board {
     });
   }
 
+  /**
+   * Check completion of the board.
+   */
   checkCompletion() {
     if (this.isCompleted()) {
       this.score = this.params.boardParams.scoreForCompletion;
@@ -202,6 +248,10 @@ export default class Board {
     }
   }
 
+  /**
+   * Check if the board is completed based on the completion rules.
+   * @returns {boolean} True if the board is completed, else false.
+   */
   isCompleted() {
     if (!this.requiresCompletion) {
       return true;
@@ -235,10 +285,17 @@ export default class Board {
     return this.params.boardParams.boardGroup.ideaBoard.metadata?.title || this.params.dictionary.get('l10n.noTitle');
   }
 
+  /**
+   * Check if the previous board contents should be used.
+   * @returns {boolean} True if previous board contents should be used, else false.
+   */
   shouldUsePreviousBoardContents() {
     return !!this.params.boardParams.usePreviousBoardContents;
   }
 
+  /**
+   * Reset the board.
+   */
   reset() {
     this.score = 0;
     this.instance?.resetTask?.();

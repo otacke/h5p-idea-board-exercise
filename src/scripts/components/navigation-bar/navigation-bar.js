@@ -4,6 +4,14 @@ import './navigation-bar.scss';
 
 export default class NavigationBar {
 
+  /**
+   * @class
+   * @param {object} [params] Parameters for the navigation bar.
+   * @param {object} [params.dictionary] Dictionary for localization.
+   * @param {object} [callbacks] Callbacks for events.
+   * @param {function} [callbacks.onClickButtonLeft] Callback for click on left button.
+   * @param {function} [callbacks.onClickButtonRight] Callback for click on right button.
+   */
   constructor(params = {}, callbacks = {}) {
     this.params = extend({}, params);
 
@@ -22,10 +30,18 @@ export default class NavigationBar {
     this.setButtonTabbable('left');
   }
 
+  /**
+   * Get the DOM element of the navigation bar.
+   * @returns {HTMLElement} The DOM element of the navigation bar.
+   */
   getDOM() {
     return this.dom;
   }
 
+  /**
+   * Build the DOM for the navigation bar.
+   * @returns {object} Object containing the DOM and buttons.
+   */
   buildDOM() {
     const dom = document.createElement('nav');
     dom.classList.add('h5p-idea-board-navigation-bar');
@@ -194,6 +210,12 @@ export default class NavigationBar {
     this.buttons[id].focus();
   }
 
+  /**
+   * Update the navigation bar.
+   * @param {object} [params] Parameters to update the navigation bar.
+   * @param {boolean} [params.left] If true, enable the left button, else disable it.
+   * @param {boolean} [params.right] If true, enable the right button, else disable it.
+   */
   update(params = {}) {
     if (typeof params.left === 'boolean') {
       if (params.left) {

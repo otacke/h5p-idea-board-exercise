@@ -14,10 +14,18 @@ export default class Summary {
     this.buildInstance();
   }
 
+  /**
+   * Get the DOM element of the summary.
+   * @returns {HTMLElement} The DOM element of the summary.
+   */
   getDOM() {
     return this.dom;
   }
 
+  /**
+   * Build the H5P instance for the summary.
+   * @throws {Error} If the instance creation fails.
+   */
   buildInstance() {
     this.instance = H5P.newRunnable(
       this.params.contentParams,
@@ -80,6 +88,10 @@ export default class Summary {
     });
   }
 
+  /**
+   * Toggle visibility of the summary.
+   * @param {boolean} visible True to show the summary, false to hide it.
+   */
   toggleVisibility(visible) {
     this.dom.classList.toggle('display-none', !visible);
     if (!visible) {

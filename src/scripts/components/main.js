@@ -11,6 +11,11 @@ import './main.scss';
 
 export default class Main {
 
+  /**
+   * @class
+   * @param {object} params Parameters for the main component.
+   * @param {object} callbacks Callbacks for events.
+   */
   constructor(params = {}, callbacks = {}) {
     this.params = extend({
       previousState: {
@@ -127,10 +132,17 @@ export default class Main {
     }
   }
 
+  /**
+   * Get the main DOM element.
+   * @returns {HTMLElement} Main DOM element.
+   */
   getDOM() {
     return this.dom;
   }
 
+  /**
+   * Go backward in the navigation.
+   */
   goBackward() {
     if (this.isShowingSummary) {
       this.exitSummary();
@@ -140,6 +152,9 @@ export default class Main {
     }
   }
 
+  /**
+   * Exit the summary view.
+   */
   exitSummary() {
     this.resizableArea.toggleVisibility(true);
     this.summary?.toggleVisibility(false);
@@ -148,11 +163,17 @@ export default class Main {
     this.params.globals.get('resize')();
   }
 
+  /**
+   * Show the previous page.
+   */
   showPreviousPage() {
     this.pages.swipeLeft();
     this.resizableArea.setPane2(this.boards.getTaskDescriptionDOM(this.pages.getCurrentPageIndex()));
   }
 
+  /**
+   * Go forward.
+   */
   goForward() {
     const currentPageIndex = this.pages.getCurrentPageIndex();
     const nextPageIndex = currentPageIndex + 1;
@@ -165,6 +186,9 @@ export default class Main {
     }
   }
 
+  /**
+   * Enter the summary view.
+   */
   enterSummary() {
     this.resizableArea.toggleVisibility(false);
     this.summary?.toggleVisibility(true);
@@ -173,6 +197,11 @@ export default class Main {
     this.updateNavigationBar();
   }
 
+  /**
+   * Show the next page.
+   * @param {number} currentPageIndex Index of the current page.
+   * @param {number} nextPageIndex Index of the next page.
+   */
   showNextPage(currentPageIndex, nextPageIndex) {
     const nextPage = this.pages.getPageAtIndex(nextPageIndex);
     const nextBoard = this.boards.getBoard(nextPageIndex);
@@ -185,6 +214,11 @@ export default class Main {
     this.resizableArea.setPane2(this.boards.getTaskDescriptionDOM(this.pages.getCurrentPageIndex()));
   }
 
+  /**
+   * Clone board contents of "from index" to board "to index".
+   * @param {number} fromIndex Index of the board to clone from.
+   * @param {number} toIndex Index of the board to clone to.
+   */
   cloneBoardFromTo(fromIndex, toIndex) {
     const fromBoard = this.boards.getBoard(fromIndex);
     const toBoard = this.boards.getBoard(toIndex);
@@ -227,6 +261,9 @@ export default class Main {
     return dom;
   }
 
+  /**
+   * Update the navigation bar based on the current state.
+   */
   updateNavigationBar() {
     const currentPageIndex = this.pages.getCurrentPageIndex();
 
@@ -243,6 +280,10 @@ export default class Main {
     this.navigationBar.update({ left: left, right: right });
   }
 
+  /**
+   * Handle when a board is completed.
+   * @param {number} index Index of the completed board.
+   */
   handleBoardCompleted(index) {
     this.completedBoardIndices.add(index);
     this.updateNavigationBar();
@@ -257,18 +298,34 @@ export default class Main {
     }
   }
 
+  /**
+   * Get the current score of all boards.
+   * @returns {number} Total score.
+   */
   getScore() {
     return this.boards.getTotalScore();
   }
 
+  /**
+   * Get the maximum score of all boards.
+   * @returns {number} Maximum score.
+   */
   getMaxScore() {
     return this.boards.getTotalMaxScore();
   }
 
+  /**
+   * Get whether the user has given an answer.
+   * @returns {boolean} True if the user has given an answer, false otherwise.
+   */
   getAnswerGiven() {
     return this.boards.getAnswerGiven();
   }
 
+  /**
+   * Get the current state of the main component.
+   * @returns {object} Current state.
+   */
   getCurrentState() {
     return {
       currentPageIndex: this.pages.getCurrentPageIndex(),
@@ -279,6 +336,9 @@ export default class Main {
     };
   }
 
+  /**
+   * Reset the main component.
+   */
   reset() {
     if (this.isShowingSummary) {
       this.exitSummary();

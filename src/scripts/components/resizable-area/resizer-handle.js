@@ -5,6 +5,17 @@ const MIN_VALUE = 0;
 const MAX_VALUE = 100;
 
 export default class ResizerHandle {
+
+  /**
+   * @class
+   * @param {object} [params] Parameters for the resizer handle.
+   * @param {string} [params.uuid1] UUID of the first element to resize.
+   * @param {string} [params.uuid2] UUID of the second element to resize.
+   * @param {object} [callbacks] Callbacks for events.
+   * @param {function} [callbacks.onStarted] Callback when resizing starts.
+   * @param {function} [callbacks.onResized] Callback when resizing occurs.
+   * @param {function} [callbacks.onEnded] Callback when resizing ends.
+   */
   constructor(params = {}, callbacks = {}) {
     this.callbacks = extend({
       onStarted: () => {},
@@ -17,6 +28,10 @@ export default class ResizerHandle {
     this.dom = this.buildDOM({ uuid1: params.uuid1, uuid2: params.uuid2 });
   }
 
+  /**
+   * Get the DOM element of the resizer handle.
+   * @returns {HTMLElement} The DOM element of the resizer handle.
+   */
   getDOM() {
     return this.dom;
   }
@@ -96,6 +111,10 @@ export default class ResizerHandle {
     return dom;
   }
 
+  /**
+   * Set the position of the resizer handle.
+   * @param {number} position Position to set, must be between MIN_VALUE and MAX_VALUE.
+   */
   setPosition(position) {
     if (position < MIN_VALUE || position > MAX_VALUE) {
       return;

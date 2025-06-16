@@ -11,6 +11,17 @@ const MAX_VALUE = 100;
 const DEFAULT_VALUE = 50;
 
 export default class ResizableArea {
+
+  /**
+   * @class
+   * @param {object} [params] Parameters for the resizable area.
+   * @param {object} [params.globals] Global parameters.
+   * @param {number} [params.minValue] Minimum value for the resizable area (default: 0).
+   * @param {number} [params.maxValue] Maximum value for the resizable area (default: 100).
+   * @param {number} [params.position] Initial position of the resizable area (default: 50).
+   * @param {boolean} [params.isCollapsed] Whether the resizable area is collapsed (default: false).
+   * @param {number} [params.positionBeforeCollapsed] Position before the resizable area was collapsed (default: 50).
+   */
   constructor(params = {}) {
     this.globals = params.globals;
 
@@ -64,9 +75,14 @@ export default class ResizableArea {
     this.setPosition(this.position);
   }
 
+  /**
+   * Get DOM.
+   * @returns {HTMLElement} Resizable area DOM.
+   */
   getDOM() {
     return this.dom;
   }
+
   /**
    * Build resizable area DOM.
    * @param {object} [params] Parameters for the resizable area.
@@ -93,6 +109,10 @@ export default class ResizableArea {
     return { dom, pane1, pane2 };
   }
 
+  /**
+   * Set position of the resizable area.
+   * @param {number} position Position to set (in percentage).
+   */
   setPosition(position) {
     const oldPosition = this.position;
 
@@ -109,16 +129,28 @@ export default class ResizableArea {
     this.globals.get('resize')();
   }
 
+  /**
+   * Set content for pane 1.
+   * @param {HTMLElement} dom Content to set in pane 1.
+   */
   setPane1(dom) {
     this.pane1.innerHTML = '';
     this.pane1.appendChild(dom);
   }
 
+  /**
+   * Set content for pane 2.
+   * @param {HTMLElement} dom Content to set in pane 2.
+   */
   setPane2(dom) {
     this.pane2.innerHTML = '';
     this.pane2.appendChild(dom);
   }
 
+  /**
+   * Toggle visibility of the resizable area.
+   * @param {boolean} visible Whether the resizable area should be visible.
+   */
   toggleVisibility(visible) {
     this.dom.classList.toggle('display-none', !visible);
     if (!visible) {

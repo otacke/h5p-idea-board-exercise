@@ -62,16 +62,27 @@ export default class SlideablePage {
     }
   }
 
+  /**
+   * Check if the page has been visible.
+   * @returns {boolean} True if the page has been visible, else false.
+   */
   hasBeenVisible() {
     return this.hasBeenVisibleState;
   }
 
+  /**
+   * Get current state.
+   * @returns {object} Current state.
+   */
   getCurrentState() {
     return {
       hasBeenVisible: this.hasBeenVisible()
     };
   }
 
+  /**
+   * Reset.
+   */
   reset() {
     this.hasBeenVisibleState = false;
   }
