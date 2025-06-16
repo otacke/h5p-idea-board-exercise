@@ -1,0 +1,65 @@
+.h5p-idea-board-exercise-resizable-area {
+  --resizer-position: 50%;
+  --resizer-width: 16px;
+  --resizing-width: calc(var(--resizer-width) / 3);
+
+  display: flex;
+  grid-area: 1 / 1 / 1 / 1;
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  transition: opacity 0.2s ease-in-out;
+  opacity: 1;
+
+  &.display-none {
+    display: none;
+  }
+
+  &.opacity-0 {
+    opacity: 0;
+  }
+
+  &.is-resizing {
+    cursor: ew-resize;
+    user-select: none;
+
+    .h5p-idea-board-exercise-resizer-bar {
+      width: var(--resizing-width);
+    }
+  }
+
+  .pane {
+    --padding-default: min(0.5rem, 8px);
+    --padding-overlap: calc(var(--resizer-width) / 4);
+
+    box-sizing: border-box;
+    overflow: auto;
+
+    &.first {
+      background: var(--color-background);
+      width: var(--resizer-position);
+
+      &>div {
+        padding:
+          var(--padding-default)
+          calc(var(--padding-overlap) + var(--resizer-width) / 2)
+          var(--padding-default)
+          var(--padding-default);
+      }
+    }
+
+    &.second {
+      background: var(--color-primary-5);
+      width: calc(100% - var(--resizer-position));
+
+      &>div {
+        padding:
+          var(--padding-default)
+          var(--padding-default)
+          var(--padding-default)
+          calc(var(--padding-overlap) + var(--resizer-width) / 2);
+      }
+    }
+  }
+}

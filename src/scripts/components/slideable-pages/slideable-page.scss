@@ -1,0 +1,25 @@
+.h5p-idea-board-exercise-slideable-page {
+  float: left;
+  margin-left: -100%;
+  padding: 0 0.5rem;
+  position: relative;
+  transition: var(--page-transition);
+  width: 100%;
+
+  &.past {
+    left: 0%;
+  }
+
+  &.present {
+    left: 100%;
+    z-index: 2;
+  }
+
+  &.future {
+    left: 200%;
+  }
+
+  &.display-none {
+    display: none;
+  }
+}

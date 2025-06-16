@@ -1,0 +1,13 @@
+.h5p-idea-board-navigation-bar {
+  --button-size: 3em;
+  --background-size: 1.25em;
+  --border-size: 2px;
+
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5em;
+  overflow: hidden;
+}

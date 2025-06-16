@@ -1,0 +1,26 @@
+.h5p-idea-board-exercise-resizer {
+  cursor: ew-resize;
+  height: 100%;
+  left: var(--resizer-position);
+  position: absolute;
+  top: 0;
+  transform: translateX(calc(-1 * var(--resizer-width) / 2));
+  width: var(--resizer-width);
+  z-index: 1;
+
+  .h5p-idea-board-exercise-resizer-bar {
+    background-color: var(--color-primary-80);
+    height: 100%;
+    margin: 0 auto;
+    transition: width 0.2s ease-in-out 0.1s;
+    width: 0px;
+  }
+
+  &:hover .h5p-idea-board-exercise-resizer-bar {
+    width: var(--resizing-width);
+  }
+
+  &:active .h5p-idea-board-exercise-resizer-bar {
+    background-color: var(--color-primary);
+  }
+}
