@@ -7,6 +7,7 @@
   transform: translateX(calc(-1 * var(--resizer-width) / 2));
   width: var(--resizer-width);
   z-index: 1;
+  touch-action: none;
 
   .h5p-idea-board-exercise-resizer-bar {
     background-color: var(--color-primary-80);
@@ -16,11 +17,24 @@
     width: 0px;
   }
 
-  &:hover .h5p-idea-board-exercise-resizer-bar {
+  &:hover .h5p-idea-board-exercise-resizer-bar,
+  &:active .h5p-idea-board-exercise-resizer-bar {
     width: var(--resizing-width);
   }
 
   &:active .h5p-idea-board-exercise-resizer-bar {
     background-color: var(--color-primary);
+  }
+}
+
+/* For touch devices */
+@media (pointer: coarse) {
+  .h5p-idea-board-exercise-resizer {
+    left: min(var(--resizer-position), 99%);
+    min-width: 2rem;
+
+    &:active .h5p-idea-board-exercise-resizer-bar {
+      width: var(--resizing-width);
+    }
   }
 }

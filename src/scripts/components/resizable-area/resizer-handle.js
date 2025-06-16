@@ -56,11 +56,21 @@ export default class ResizerHandle {
     dom.setAttribute('tabindex', '0');
     dom.setAttribute('aria-controls', `${params.uuid1} ${params.uuid2}`);
 
-    dom.addEventListener('pointerdown', () => {
+    // Handle mouse/pointer events
+    dom.addEventListener('pointerdown', (event) => {
+      event.preventDefault(); // Prevent text selection
       this.isResizing = true;
       this.callbacks.onStarted();
     });
 
+    // Handle touch events specifically
+    dom.addEventListener('touchstart', (event) => {
+      event.preventDefault(); // Prevent scrolling
+      this.isResizing = true;
+      this.callbacks.onStarted();
+    });
+
+    // Handle mouse/pointer movement
     document.addEventListener('pointermove', (event) => {
       if (!this.isResizing) {
         return;
@@ -69,7 +79,39 @@ export default class ResizerHandle {
       this.callbacks.onResized({ position: event.clientX });
     });
 
+    // Handle touch movement
+    document.addEventListener('touchmove', (event) => {
+      if (!this.isResizing) {
+        return;
+      }
+
+      if (event.touches && event.touches[0]) {
+        this.callbacks.onResized({ position: event.touches[0].clientX });
+      }
+    }, { passive: false });
+
+    // Handle mouse/pointer release
     document.addEventListener('pointerup', () => {
+      if (!this.isResizing) {
+        return;
+      }
+
+      this.isResizing = false;
+      this.callbacks.onEnded();
+    });
+
+    // Handle touch release
+    document.addEventListener('touchend', () => {
+      if (!this.isResizing) {
+        return;
+      }
+
+      this.isResizing = false;
+      this.callbacks.onEnded();
+    });
+
+    // Handle touch cancel
+    document.addEventListener('touchcancel', () => {
       if (!this.isResizing) {
         return;
       }
