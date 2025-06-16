@@ -3,7 +3,7 @@
   "description": "Chain multiple Idea Boards to form an exercise",
   "majorVersion": 1,
   "minorVersion": 1,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 1,
   "author": "Oliver Tacke",
   "license": "MIT",
