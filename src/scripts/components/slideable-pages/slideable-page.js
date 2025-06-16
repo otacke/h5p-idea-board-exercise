@@ -58,7 +58,6 @@ export default class SlideablePage {
     this.dom.classList.toggle('future', position > 0);
 
     if (position === 0) {
-      // TODO: Save this as previous state
       this.hasBeenVisibleState = true;
     }
   }
