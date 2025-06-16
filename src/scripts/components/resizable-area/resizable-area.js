@@ -162,4 +162,27 @@ export default class ResizableArea {
       });
     };
   }
+
+  /**
+   * Get the current flex direction of the resizable area.
+   * @returns {string} Current flex direction: `row` or `column`.
+   */
+  getFlexDirection() {
+    return window.getComputedStyle(this.dom).getPropertyValue('flex-direction') ?? 'row';
+  }
+
+  /**
+   * Get the height of a specific pane.
+   * @param {number} index Index of the pane (1 or 2).
+   * @returns {number} Height of the specified pane in pixels.
+   */
+  getPaneHeight(index) {
+    if (index === 1) {
+      return this.pane1.offsetHeight;
+    }
+    else if (index === 2) {
+      return this.pane2.offsetHeight;
+    }
+    return 0; // Invalid index
+  }
 }

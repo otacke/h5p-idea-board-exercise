@@ -63,3 +63,31 @@
     }
   }
 }
+
+@container h5p-idea-board-exercise-main-area (max-width: 720px) {
+  .h5p-idea-board-exercise-resizable-area {
+    flex-direction: column;
+
+
+    .pane.first {
+      order: 2;
+      width: 100%;
+    }
+
+    .pane.second {
+      order: 1;
+      width: 100%;
+    }
+
+    .h5p-idea-board-exercise-resizer {
+      display: none;
+    }
+  }
+
+  .h5p-fullscreen .h5p-idea-board-exercise-resizable-area {
+    .pane.second {
+      max-height: 35%;
+      overflow: auto;
+    }
+  }
+}

@@ -376,7 +376,12 @@ export default class Main {
 
     if (shouldBeFullscreen) {
       window.setTimeout(() => {
-        const availableHeight = window.innerHeight - this.navigationBar.getHeight();
+        const flexDirection = this.resizableArea.getFlexDirection();
+
+        const availableHeight = (flexDirection === 'row') ?
+          window.innerWidth - this.navigationBar.getHeight() :
+          window.innerHeight - this.navigationBar.getHeight() - this.resizableArea.getPaneHeight(2);
+
         this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${availableHeight}px`);
 
         const availableWidth = availableHeight * this.pages.getAspectRatio();
