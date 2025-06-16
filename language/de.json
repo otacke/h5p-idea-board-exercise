@@ -1,0 +1,123 @@
+{
+  "semantics": [
+    {
+      "label": "Ideenboards",
+      "entity": "Ideenboard",
+      "widgets": [
+        {
+          "label": "Standard"
+        }
+      ],
+      "field": {
+        "label": "Ideenboards",
+        "fields": [
+          {
+            "label": "Aufgabenbeschreibung für dieses Board",
+            "description": "Beschreibe die Aufgabe für dieses spezifische Ideenboard."
+          },
+          {
+            "label": "Inhalte des vorherigen Ideenboards verwenden",
+            "description": "Wenn aktiviert, werden beim ersten Zugriff auf dieses Ideenboard die Inhalte des vorherigen Ideenboards hierher kopiert."
+          },
+          {
+            "label": "Ideenboard",
+            "fields": [
+              {
+                "label": "Ideenboard"
+              },
+              {
+                "label": "Dummy"
+              }
+            ]
+          },
+          {
+            "label": "Die Nutzenden müssen dieses Board abschließen, um fortzufahren",
+            "description": "Wenn aktiviert, müssen die Nutzenden dieses Ideenboard abschließen, bevor sie auf das nächste zugreifen können."
+          },
+          {
+            "label": "Abschlussregeln",
+            "description": "Definiere die Regeln, wann dieses Ideenboard als abgeschlossen gilt.",
+            "fields": [
+              {
+                "label": "Anzahl der erstellten Textfelder",
+                "description": "Lege die Mindestanzahl an Textfeldern fest, die die Nutzenden erstellen müssen, damit dieses Ideenboard als abgeschlossen gilt."
+              },
+              {
+                "label": "Anzahl der bearbeiteten Textfelder",
+                "description": "Lege die Mindestanzahl an Textfeldern fest, die die Nutzenden bearbeiten müssen, damit dieses Ideenboard als abgeschlossen gilt."
+              }
+            ]
+          },
+          {
+            "label": "Punktzahl für den Abschluss",
+            "description": "Lege die Punktzahl fest, die dir beim Abschluss dieses Ideenboards vergeben wird. Wenn keine Regeln für den Abschluss festgelegt sind, wird die Punktzahl beim Zugriff auf das Board vergeben."
+          }
+        ]
+      }
+    },
+    {
+      "label": "Abschlussseite hinzufügen",
+      "description": "Wenn aktiviert, wird am Ende der Übung eine Abschlussseite hinzugefügt."
+    },
+    {
+      "label": "Abschlussseite",
+      "fields": [
+        {
+          "label": "Abschlussseite"
+        },
+        {
+          "label": "Platzhalter",
+          "default": "Platzhalter"
+        }
+      ]
+    },
+    {
+      "label": "Bedienoberfläche",
+      "fields": [
+        {
+          "label": "Inhalt ohne Titel",
+          "default": "Ohne Titel"
+        },
+        {
+          "label": "Platzhalter",
+          "default": "Platzhalter"
+        }
+      ]
+    },
+    {
+      "label": "Texte für Barrierefreiheit",
+      "fields": [
+        {
+          "label": "Vorheriger Inhalt",
+          "default": "Zum vorherigen Inhalt gehen."
+        },
+        {
+          "label": "Nächster Inhalt",
+          "default": "Zum nächsten Inhalt gehen."
+        },
+        {
+          "label": "Vorheriger Inhalt deaktiviert",
+          "default": "Zum vorherigen Inhalt zu gehen ist derzeit nicht möglich."
+        },
+        {
+          "label": "Nächster Inhalt deaktiviert",
+          "default": "Zum nächsten Inhalt zu gehen ist derzeit nicht möglich."
+        },
+        {
+          "label": "Zu Seite gewechselt",
+          "default": "Zu Seite @current von @total gewechselt.",
+          "description": "@current und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt."
+        },
+        {
+          "label": "Seitennavigationsleiste",
+          "default": "Seitennavigationsleiste"
+        },
+        {
+          "label": "Aktuelle Seite",
+          "default": "@current / @total",
+          "description": "@current und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt."
+        }
+      ]
+    }
+  ]
+}

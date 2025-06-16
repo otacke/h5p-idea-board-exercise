@@ -1,16 +1,73 @@
 {
   "semantics": [
     {
-      "label": "Sample"
+      "label": "Idea Boards",
+      "entity": "Idea Board",
+      "widgets": [
+        {
+          "label": "Default"
+        }
+      ],
+      "field": {
+        "label": "Idea Boards",
+        "fields": [
+          {
+            "label": "Task description for this board",
+            "description": "Describe the task for this specific idea board."
+          },
+          {
+            "label": "Use previous idea board's contents",
+            "description": "If enabled, when the user first accesses this idea board, the contents of the previous idea board will be copied to this one."
+          },
+          {
+            "label": "Idea Board",
+            "fields": [
+              {
+                "label": "Idea Board"
+              },
+              {
+                "label": "Dummy"
+              }
+            ]
+          },
+          {
+            "label": "User must complete this board to progress",
+            "description": "If enabled, the user must complete this idea board before they can access the next one."
+          },
+          {
+            "label": "Completion rules",
+            "description": "Define the rules for when this idea board is considered completed.",
+            "fields": [
+              {
+                "label": "Number of text fields created",
+                "description": "Set the minimum number of text fields that must be created by the user to consider this idea board completed."
+              },
+              {
+                "label": "Number of text fields edited",
+                "description": "Set the minimum number of text fields that must be edited by the user to consider this idea board completed."
+              }
+            ]
+          },
+          {
+            "label": "Score for completion",
+            "description": "Set the score that will be awarded to the user when they complete this idea board. If no rules are set for completion, the score is awarded when accessing the board."
+          }
+        ]
+      }
     },
     {
-      "label": "Behavioural settings",
+      "label": "Add summary screen",
+      "description": "If enabled, a summary screen will be added at the end of the exercise."
+    },
+    {
+      "label": "Summary screen",
       "fields": [
         {
-          "label": "Sample behaviour"
+          "label": "Summary Screen"
         },
         {
-          "label": "Dummy"
+          "label": "Dummy",
+          "default": "Dummy"
         }
       ]
     },
@@ -18,9 +75,8 @@
       "label": "User interface",
       "fields": [
         {
-          "label": "Sample entry for visible user interface strings",
-          "description": "This is just a sample entry for visible user interface strings.",
-          "default": "Sample l10n"
+          "label": "Content without a title",
+          "default": "Untitled"
         },
         {
           "label": "Dummy",
@@ -32,13 +88,34 @@
       "label": "Accessibility texts",
       "fields": [
         {
-          "label": "Sample entry for accessibility strings",
-          "description": "This is just a sample entry for accessibility strings.",
-          "default": "Sample a11y"
+          "label": "Previous content",
+          "default": "Go to previous content."
         },
         {
-          "label": "Dummy",
-          "default": "Dummy"
+          "label": "Next content",
+          "default": "Go to next content."
+        },
+        {
+          "label": "Previous content disabled",
+          "default": "Going to previous content is currently not possible."
+        },
+        {
+          "label": "Next content disabled",
+          "default": "Going to next content is currently not possible."
+        },
+        {
+          "label": "Moved to page",
+          "default": "Moved to page @current of @total.",
+          "description": "@current and @total are placeholders and will be replaced by the respective values."
+        },
+        {
+          "label": "Page navigation bar",
+          "default": "Page navigation bar"
+        },
+        {
+          "label": "Current page",
+          "default": "@current / @total",
+          "description": "@current and @total are placeholders and will be replaced by the respective values."
         }
       ]
     }
