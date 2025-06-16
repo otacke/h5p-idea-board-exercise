@@ -17,15 +17,17 @@ export default class NavigationBar {
 
     this.callbacks = extend({
       onClickButtonLeft: () => {},
-      onClickButtonRight: () => {}
+      onClickButtonRight: () => {},
+      onClickButtonFullscreen: () => {}
     }, callbacks);
 
     this.buttons = {};
 
-    const { dom, buttonLeft, buttonRight } = this.buildDOM();
+    const { dom, buttonLeft, buttonRight, buttonFullscreen } = this.buildDOM();
     this.dom = dom;
     this.buttons.left = buttonLeft;
     this.buttons.right = buttonRight;
+    this.buttons.fullscreen = buttonFullscreen;
 
     this.setButtonTabbable('left');
   }
@@ -71,7 +73,7 @@ export default class NavigationBar {
         }
       }
     );
-    dom.appendChild(buttonLeft.getDOM());
+    dom.append(buttonLeft.getDOM());
 
     const buttonRight = new Button(
       {
@@ -92,9 +94,56 @@ export default class NavigationBar {
         }
       }
     );
-    dom.appendChild(buttonRight.getDOM());
+    dom.append(buttonRight.getDOM());
 
-    return { dom, buttonLeft, buttonRight };
+    const buttonFullscreen = new Button(
+      {
+        id: 'fullscreen',
+        type: 'pulse',
+        a11y: {
+          active: this.params.dictionary.get('a11y.exitFullscreen'),
+          inactive: this.params.dictionary.get('a11y.enterFullscreen'),
+          disabled: this.params.dictionary.get('a11y.fullScreenDisabled'),
+        },
+        classes: [
+          'h5p-idea-board-button',
+          'h5p-idea-board-button-fullscreen',
+          'enter-fullscreen'
+        ]
+      },
+      {
+        onClick: () => {
+          this.callbacks.onClickButtonFullscreen();
+        }
+      }
+    );
+
+    if (this.params.globals.get('isFullscreenSupported')) {
+      dom.append(buttonFullscreen.getDOM());
+    }
+
+    return { dom, buttonLeft, buttonRight, buttonFullscreen };
+  }
+
+  /**
+   * Toggle fullscreen state.
+   * @param {boolean} [state] True to enter fullscreen, false to exit fullscreen.
+   */
+  toggleFullscreen(state) {
+    if (!this.buttons.fullscreen) {
+      return; // Fullscreen button not available
+    }
+
+    this.buttons.fullscreen.toggleClass('enter-fullscreen', state !== true);
+    this.buttons.fullscreen.toggleClass('exit-fullscreen', state === true);
+  }
+
+  /**
+   * Get the width of the navigation bar.
+   * @returns {number} Width of the navigation bar.
+   */
+  getHeight() {
+    return this.dom.offsetHeight;
   }
 
   /**

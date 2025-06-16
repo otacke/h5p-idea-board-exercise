@@ -28,11 +28,27 @@
   }
 
   &.h5p-idea-board-button-left::before {
-    content: '\f053';
+    content: var(--icon-fontawesome-chevron-left);
   }
 
   &.h5p-idea-board-button-right::before {
-    content: '\f054';
+    content: var(--icon-fontawesome-chevron-right);
+  }
+
+  &.h5p-idea-board-button-fullscreen {
+    margin-left: auto;
+
+    &.exit-fullscreen {
+      &::before {
+        content: var(--icon-fontawesome-compress);
+      }
+    }
+
+    &.enter-fullscreen {
+      &::before {
+        content: var(--icon-fontawesome-expand);
+      }
+    }
   }
 
   &:not(.disabled) {

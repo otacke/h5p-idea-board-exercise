@@ -207,6 +207,15 @@ export default class Button {
   }
 
   /**
+   * Toggle class on button.
+   * @param {string} className Class name to toggle.
+   * @param {boolean} state True to add class, false to remove.
+   */
+  toggleClass(className, state) {
+    this.dom.classList.toggle(className, state);
+  }
+
+  /**
    * Determine whether button is active.
    * @returns {boolean} True, if button is active, else false.
    */

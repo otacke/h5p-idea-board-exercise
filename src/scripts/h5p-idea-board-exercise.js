@@ -35,6 +35,7 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
     this.globals = new Globals();
     this.globals.set('mainInstance', this);
     this.globals.set('contentId', this.contentId);
+    this.globals.set('isFullscreenSupported', this.isRoot() && H5P.fullscreenSupported);
     this.globals.set('resize', () => {
       this.trigger('resize');
     });
@@ -58,6 +59,9 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
         },
         onCompleted: () => {
           this.triggerXAPIEvent('completed');
+        },
+        onClickButtonFullscreen: () => {
+          this.handleFullscreenClicked();
         }
       }
     );
@@ -68,7 +72,51 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
    * @param {H5P.jQuery} $wrapper Content's container.
    */
   attach($wrapper) {
+    this.dom = $wrapper.get(0);
+
     $wrapper.get(0).classList.add('h5p-idea-board-exercise');
     $wrapper.get(0).appendChild(this.main.getDOM());
+  }
+
+  /**
+   * Handle fullscreen button clicked.
+   */
+  handleFullscreenClicked() {
+    this.toggleFullscreen();
+  }
+
+  /**
+   * Toggle fullscreen button.
+   * @param {string|boolean} state enter|false for enter, exit|true for exit.
+   */
+  toggleFullscreen(state) {
+    if (!this.dom) {
+      return;
+    }
+
+    switch (state) {
+      case 'enter':
+        state = false;
+        break;
+
+      case 'exit':
+        state = true;
+        break;
+
+      default:
+        state = typeof state === 'boolean' ? state : !H5P.isFullscreen;
+    }
+
+    if (state) {
+      this.container = this.container || this.dom.closest('.h5p-container');
+      if (this.container) {
+        H5P.fullScreen(H5P.jQuery(this.container), this);
+      }
+    }
+    else {
+      H5P.exitFullScreen();
+    }
+
+    this.main.toggleFullscreen(state);
   }
 }

@@ -3,5 +3,9 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
+    overflow: hidden;
+    margin-inline: auto;
+    max-height: var(--h5p-idea-board-exercise-main-max-height);
+    max-width: var(--h5p-idea-board-exercise-main-max-width);
   }
 }

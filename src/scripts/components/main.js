@@ -9,6 +9,9 @@ import { extend } from '@services/util.js';
 
 import './main.scss';
 
+/** @constant {number} FULL_SCREEN_DELAY_LARGE_MS Time some browsers need to go to full screen. */
+const FULL_SCREEN_DELAY_LARGE_MS = 300;
+
 export default class Main {
 
   /**
@@ -28,7 +31,8 @@ export default class Main {
 
     this.callbacks = extend({
       onProgressed: () => {},
-      onCompleted: () => {}
+      onCompleted: () => {},
+      onClickButtonFullscreen: () => {}
     }, callbacks);
 
     this.params.globals.set('read', (text) => {
@@ -41,6 +45,7 @@ export default class Main {
 
     this.navigationBar = new NavigationBar(
       {
+        globals: this.params.globals,
         dictionary: this.params.dictionary,
       },
       {
@@ -49,6 +54,9 @@ export default class Main {
         },
         onClickButtonRight: () => {
           this.goForward();
+        },
+        onClickButtonFullscreen: () => {
+          this.callbacks.onClickButtonFullscreen();
         }
       }
     );
@@ -357,5 +365,27 @@ export default class Main {
    */
   getXAPIData() {
     return this.boards.getXAPIData();
+  }
+
+  /**
+   * Toggle fullscreen mode.
+   * @param {boolean} shouldBeFullscreen True to enter fullscreen, false to exit.
+   */
+  toggleFullscreen(shouldBeFullscreen) {
+    this.navigationBar.toggleFullscreen(shouldBeFullscreen);
+
+    if (shouldBeFullscreen) {
+      window.setTimeout(() => {
+        const availableHeight = window.innerHeight - this.navigationBar.getHeight();
+        this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${availableHeight}px`);
+
+        const availableWidth = availableHeight * this.pages.getAspectRatio();
+        this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-width', `${availableWidth}px`);
+      }, FULL_SCREEN_DELAY_LARGE_MS); // Some devices don't register user gesture before call to to requestFullscreen
+    }
+    else {
+      this.dom.style.removeProperty('--h5p-idea-board-exercise-main-max-height');
+      this.dom.style.removeProperty('--h5p-idea-board-exercise-main-max-width');
+    }
   }
 }

@@ -4,10 +4,10 @@
   --border-size: 2px;
 
   align-items: center;
+  box-shadow: 10px 10px 30px var(--color-shadow-light);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   gap: 0.5em;
   overflow: hidden;
 }

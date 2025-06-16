@@ -56,6 +56,15 @@ export default class SlideablePages {
   }
 
   /**
+   * Get the aspect ratio of the slideable pages.
+   * @returns {number} Aspect ratio (width / height).
+   */
+  getAspectRatio() {
+    const rect = this.dom.getBoundingClientRect();
+    return rect.width / rect.height;
+  }
+
+  /**
    * Get page at index.
    * @param {number} index Index of the page.
    * @returns {SlideablePage|null} The page at the given index, or null if out of bounds.
