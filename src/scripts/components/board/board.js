@@ -25,7 +25,7 @@ export default class Board {
     this.taskDescriptionDOM.classList.add('h5p-idea-board-exercise-task-description');
     this.taskDescriptionDOM.innerHTML = this.params.boardParams.taskDescription ?? '';
 
-    this.buildInstance();
+    this.buildInstance(this.params.previousState);
     this.attachInstance();
   }
 
@@ -307,5 +307,13 @@ export default class Board {
    */
   getXAPIData() {
     return this.instance.getXAPIData();
+  }
+
+  /**
+   * Get the current state of the board.
+   * @returns {object} Current state of the board.
+   */
+  getCurrentState() {
+    return this.instance.getCurrentState();
   }
 }

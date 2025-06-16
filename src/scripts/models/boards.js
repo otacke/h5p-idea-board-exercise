@@ -71,4 +71,12 @@ export default class Boards {
   getXAPIData() {
     return this.boards.map((board) => board.getXAPIData());
   }
+
+  /**
+   * Get current state of all boards.
+   * @returns {object[]} Current state of each board.
+   */
+  getCurrentState() {
+    return this.boards.map((board) => board.getCurrentState());
+  }
 }

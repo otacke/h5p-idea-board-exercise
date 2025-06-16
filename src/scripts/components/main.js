@@ -58,7 +58,8 @@ export default class Main {
         {
           dictionary: params.dictionary,
           globals: params.globals,
-          boardParams: boardParams
+          boardParams: boardParams,
+          previousState: this.params.previousState.boards?.[index]
         },
         {
           onCompleted: () => {
@@ -333,6 +334,7 @@ export default class Main {
       wereAllBoardsCompleted: this.wereAllBoardsCompleted,
       completedBoardIndices: Array.from(this.completedBoardIndices),
       pages: this.pages.getCurrentState(),
+      boards: this.boards.getCurrentState()
     };
   }
 

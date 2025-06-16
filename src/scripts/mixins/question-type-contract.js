@@ -65,7 +65,7 @@ export default class QuestionTypeContract {
       return {};
     }
 
-    if (!this.getAnswerGiven() && !this.params.behaviour.timeLimitGlobal) {
+    if (!this.getAnswerGiven()) {
       // Nothing relevant to store, but previous state in DB must be cleared after reset
       return this.contentWasReset ? {} : undefined;
     }
