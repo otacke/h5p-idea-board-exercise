@@ -12,6 +12,9 @@ import './main.scss';
 /** @constant {number} FULL_SCREEN_DELAY_LARGE_MS Time some browsers need to go to full screen. */
 const FULL_SCREEN_DELAY_LARGE_MS = 300;
 
+/** @constant {number} INDEX_OF_TASK_DESCRIPTION_PANE Index of the task description pane in the resizable area. */
+const INDEX_OF_TASK_DESCRIPTION_PANE = 1;
+
 export default class Main {
 
   /**
@@ -378,9 +381,10 @@ export default class Main {
       window.setTimeout(() => {
         const flexDirection = this.resizableArea.getFlexDirection();
 
+        const guaranteedHeight = window.innerHeight - this.navigationBar.getHeight();
         const availableHeight = (flexDirection === 'row') ?
-          window.innerWidth - this.navigationBar.getHeight() :
-          window.innerHeight - this.navigationBar.getHeight() - this.resizableArea.getPaneHeight(2);
+          guaranteedHeight :
+          guaranteedHeight - this.resizableArea.getPaneHeight(INDEX_OF_TASK_DESCRIPTION_PANE);
 
         this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${availableHeight}px`);
 

@@ -10,6 +10,8 @@ const MAX_VALUE = 100;
 /** constant {number} DEFAULT_VALUE Default value for the resizable area */
 const DEFAULT_VALUE = 50;
 
+
+
 export default class ResizableArea {
 
   /**
@@ -177,10 +179,10 @@ export default class ResizableArea {
    * @returns {number} Height of the specified pane in pixels.
    */
   getPaneHeight(index) {
-    if (index === 1) {
+    if (index === 0) {
       return this.pane1.offsetHeight;
     }
-    else if (index === 2) {
+    else if (index === 1) {
       return this.pane2.offsetHeight;
     }
     return 0; // Invalid index
