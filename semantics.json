@@ -44,7 +44,7 @@
           "name": "usePreviousBoardContents",
           "type": "boolean",
           "label": "Use previous idea board's contents",
-          "description": "If enabled, when the user first accesses this idea board, the contents of the previous idea board will be copied to this one.",
+          "description": "If enabled, when the user first accesses this idea board, the contents of the previous idea board will be copied to this one. Also, the user can copy the contents of the previous board manually.",
           "importance": "medium",
           "optional": true,
           "default": false
@@ -117,14 +117,14 @@
           }
         },
         {
-            "name": "scoreForCompletion",
-            "type": "number",
-            "label": "Score for completion",
-            "description": "Set the score that will be awarded to the user when they complete this idea board. If no rules are set for completion, the score is awarded when accessing the board.",
-            "optional": true,
-            "minimum": 0,
-            "default": 0
-          }
+          "name": "scoreForCompletion",
+          "type": "number",
+          "label": "Score for completion",
+          "description": "Set the score that will be awarded to the user when they complete this idea board. If no rules are set for completion, the score is awarded when accessing the board.",
+          "optional": true,
+          "minimum": 0,
+          "default": 0
+        }
       ],
       "widget": "ideaBoardExerciseBoard"
     }
@@ -198,7 +198,7 @@
     "label": "Accessibility texts",
     "common": true,
     "fields": [
-    {
+      {
         "name": "previousContent",
         "type": "text",
         "label": "Previous content",
@@ -221,6 +221,18 @@
         "type": "text",
         "label": "Next content disabled",
         "default": "Going to next content is currently not possible."
+      },
+      {
+        "name": "clonePreviousSlide",
+        "type": "text",
+        "label": "Clone previous slide",
+        "default": "Clone contents of previous slide to current slide."
+      },
+      {
+        "name": "clonePreviousSlideDisabled",
+        "type": "text",
+        "label": "Clone previous slide disabled",
+        "default": "Cloning contents of previous slide is currently not possible."
       },
       {
         "name": "exitFullscreen",
@@ -250,8 +262,8 @@
       {
         "name": "navigationBar",
         "type": "text",
-        "label": "Page navigation bar",
-        "default": "Page navigation bar"
+        "label": "Page toolbar",
+        "default": "Page toolbar"
       },
       {
         "name": "currentPage",

@@ -35,9 +35,11 @@
     content: var(--icon-fontawesome-chevron-right);
   }
 
-  &.h5p-idea-board-button-fullscreen {
-    margin-left: auto;
+  &.h5p-idea-board-button-clone-previous::before {
+    content: var(--icon-fontawesome-clone);
+  }
 
+  &.h5p-idea-board-button-fullscreen {
     &.exit-fullscreen {
       &::before {
         content: var(--icon-fontawesome-compress);

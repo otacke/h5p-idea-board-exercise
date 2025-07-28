@@ -17,7 +17,7 @@
           },
           {
             "label": "Inhalte des vorherigen Ideenboards verwenden",
-            "description": "Wenn aktiviert, werden beim ersten Zugriff auf dieses Ideenboard die Inhalte des vorherigen Ideenboards hierher kopiert."
+            "description": "Wenn aktiviert, werden beim ersten Zugriff auf dieses Ideenboard die Inhalte des vorherigen Ideenboards hierher kopiert. Außerdem können die Nutzenden die Inhalte des vorherigen Boards manuell kopieren."
           },
           {
             "label": "Ideenboard",
@@ -102,6 +102,14 @@
         {
           "label": "Nächster Inhalt deaktiviert",
           "default": "Zum nächsten Inhalt zu gehen ist derzeit nicht möglich."
+        },
+        {
+          "label": "Kopiere vorherige Folie",
+          "default": "Kopiere die Inhalte der vorherigen Folie in die aktuelle Folie."
+        },
+        {
+          "label": "Kopieren der vorherigen Folie deaktiviert",
+          "default": "Kopieren der Inhalte der vorherigen Folie ist derzeit nicht möglich."
         },
         {
           "label": "Vollbildmodus beenden",

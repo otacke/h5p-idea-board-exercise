@@ -17,7 +17,7 @@
           },
           {
             "label": "Use previous idea board's contents",
-            "description": "If enabled, when the user first accesses this idea board, the contents of the previous idea board will be copied to this one."
+            "description": "If enabled, when the user first accesses this idea board, the contents of the previous idea board will be copied to this one. Also, the user can copy the contents of the previous board manually."
           },
           {
             "label": "Idea Board",
@@ -104,6 +104,14 @@
           "default": "Going to next content is currently not possible."
         },
         {
+          "label": "Clone previous slide",
+          "default": "Clone contents of previous slide to current slide."
+        },
+        {
+          "label": "Clone previous slide disabled",
+          "default": "Cloning contents of previous slide is currently not possible."
+        },
+        {
           "label": "Exit fullscreen",
           "default": "Exit fullscreen mode."
         },
@@ -121,8 +129,8 @@
           "description": "@current and @total are placeholders and will be replaced by the respective values."
         },
         {
-          "label": "Page navigation bar",
-          "default": "Page navigation bar"
+          "label": "Page toolbar",
+          "default": "Page toolbar"
         },
         {
           "label": "Current page",

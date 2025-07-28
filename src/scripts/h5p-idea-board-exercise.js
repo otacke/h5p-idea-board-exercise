@@ -25,6 +25,11 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
     const defaults = extend({}, getSemanticsDefaults());
     this.params = extend(defaults, params);
 
+    // Ensure the first board cannot use previous board contents
+    if (this.params.boards?.length > 0) {
+      this.params.boards[0].usePreviousBoardContents = false;
+    }
+
     this.contentId = contentId;
     this.extras = extras;
 
@@ -36,6 +41,7 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
     this.globals.set('mainInstance', this);
     this.globals.set('contentId', this.contentId);
     this.globals.set('isFullscreenSupported', this.isRoot() && H5P.fullscreenSupported);
+    this.globals.set('someCanClonePreviousSlide', this.params.boards.some((board) => board.usePreviousBoardContents));
     this.globals.set('resize', () => {
       this.trigger('resize');
     });

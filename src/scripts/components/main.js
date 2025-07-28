@@ -58,6 +58,12 @@ export default class Main {
         onClickButtonRight: () => {
           this.goForward();
         },
+        onClickButtonClonePreviousSlide: () => {
+          this.cloneBoardFromTo(
+            this.pages.getCurrentPageIndex() - 1,
+            this.pages.getCurrentPageIndex()
+          );
+        },
         onClickButtonFullscreen: () => {
           this.callbacks.onClickButtonFullscreen();
         }
@@ -218,12 +224,25 @@ export default class Main {
     const nextPage = this.pages.getPageAtIndex(nextPageIndex);
     const nextBoard = this.boards.getBoard(nextPageIndex);
 
-    if (nextPage && !nextPage.hasBeenVisible() && nextBoard?.shouldUsePreviousBoardContents()) {
+    if (nextPage && !nextPage.hasBeenVisible() && nextBoard?.canUsePreviousBoardContents()) {
       this.cloneBoardFromTo(currentPageIndex, nextPageIndex);
     }
 
     this.pages.swipeRight();
     this.resizableArea.setPane2(this.boards.getTaskDescriptionDOM(this.pages.getCurrentPageIndex()));
+  }
+
+  /**
+   * Update the slide clone button based on the current state.
+   */
+  updateSlideCloneButton() {
+    const currentBoard = this.boards.getBoard(this.pages.getCurrentPageIndex());
+    if (currentBoard?.canUsePreviousBoardContents() && !this.isShowingSummary) {
+      this.navigationBar.enableButton('clonePreviousSlide');
+    }
+    else {
+      this.navigationBar.disableButton('clonePreviousSlide');
+    }
   }
 
   /**
@@ -290,6 +309,8 @@ export default class Main {
     const right = currentBoardWasCompleted && !this.isShowingSummary && hasMorePages;
 
     this.navigationBar.update({ left: left, right: right });
+
+    this.updateSlideCloneButton();
   }
 
   /**

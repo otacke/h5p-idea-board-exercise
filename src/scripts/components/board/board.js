@@ -289,7 +289,7 @@ export default class Board {
    * Check if the previous board contents should be used.
    * @returns {boolean} True if previous board contents should be used, else false.
    */
-  shouldUsePreviousBoardContents() {
+  canUsePreviousBoardContents() {
     return !!this.params.boardParams.usePreviousBoardContents;
   }
 

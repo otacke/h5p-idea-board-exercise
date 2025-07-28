@@ -8,6 +8,21 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   overflow: hidden;
   padding: 0.25rem;
+
+  .h5p-idea-board-navigation-bar-buttons-container-left {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .h5p-idea-board-navigation-bar-buttons-container-right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
 }

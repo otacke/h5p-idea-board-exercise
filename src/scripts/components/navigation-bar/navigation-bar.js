@@ -18,18 +18,28 @@ export default class NavigationBar {
     this.callbacks = extend({
       onClickButtonLeft: () => {},
       onClickButtonRight: () => {},
+      onClickButtonClonePreviousSlide: () => {},
       onClickButtonFullscreen: () => {}
     }, callbacks);
 
     this.buttons = {};
 
-    const { dom, buttonLeft, buttonRight, buttonFullscreen } = this.buildDOM();
+    const { dom, buttons } = this.buildDOM();
     this.dom = dom;
-    this.buttons.left = buttonLeft;
-    this.buttons.right = buttonRight;
-    this.buttons.fullscreen = buttonFullscreen;
+    this.buttons.left = buttons.left;
+    this.buttons.right = buttons.right;
+    if (buttons.clonePreviousSlide) {
+      this.buttons.clonePreviousSlide = buttons.clonePreviousSlide;
+    }
+    if (buttons.fullscreen) {
+      this.buttons.fullscreen = buttons.fullscreen;
+    }
 
-    this.setButtonTabbable('left');
+    // Make first button active one
+    Object.values(this.buttons).forEach((button, index) => {
+      button.setAttribute('tabindex', index === 0 ? '0' : '-1');
+    });
+    this.currentButtonIndex = 0;
   }
 
   /**
@@ -45,6 +55,8 @@ export default class NavigationBar {
    * @returns {object} Object containing the DOM and buttons.
    */
   buildDOM() {
+    const buttons = {};
+
     const dom = document.createElement('nav');
     dom.classList.add('h5p-idea-board-navigation-bar');
     dom.setAttribute('role', 'toolbar');
@@ -54,7 +66,15 @@ export default class NavigationBar {
       this.handleKeydown(event);
     });
 
-    const buttonLeft = new Button(
+    const buttonsContainerLeft = document.createElement('div');
+    buttonsContainerLeft.classList.add('h5p-idea-board-navigation-bar-buttons-container-left');
+    dom.append(buttonsContainerLeft);
+
+    const buttonsContainerRight = document.createElement('div');
+    buttonsContainerRight.classList.add('h5p-idea-board-navigation-bar-buttons-container-right');
+    dom.append(buttonsContainerRight);
+
+    buttons.left = new Button(
       {
         a11y: {
           active: this.params.dictionary.get('a11y.previousContent'),
@@ -73,9 +93,9 @@ export default class NavigationBar {
         }
       }
     );
-    dom.append(buttonLeft.getDOM());
+    buttonsContainerLeft.append(buttons.left.getDOM());
 
-    const buttonRight = new Button(
+    buttons.right = new Button(
       {
         a11y: {
           active: this.params.dictionary.get('a11y.nextContent'),
@@ -94,35 +114,56 @@ export default class NavigationBar {
         }
       }
     );
-    dom.append(buttonRight.getDOM());
+    buttonsContainerLeft.append(buttons.right.getDOM());
 
-    const buttonFullscreen = new Button(
-      {
-        id: 'fullscreen',
+    if (this.params.globals.get('someCanClonePreviousSlide')) {
+      buttons.clonePreviousSlide = new Button({
+        id: 'clone-previous-slide',
         type: 'pulse',
         a11y: {
-          active: this.params.dictionary.get('a11y.exitFullscreen'),
-          inactive: this.params.dictionary.get('a11y.enterFullscreen'),
-          disabled: this.params.dictionary.get('a11y.fullScreenDisabled'),
+          active: this.params.dictionary.get('a11y.clonePreviousSlide'),
+          disabled: this.params.dictionary.get('a11y.clonePreviousSlideDisabled'),
         },
         classes: [
           'h5p-idea-board-button',
-          'h5p-idea-board-button-fullscreen',
-          'enter-fullscreen'
+          'h5p-idea-board-button-clone-previous'
         ]
-      },
-      {
+      }, {
         onClick: () => {
-          this.callbacks.onClickButtonFullscreen();
+          this.callbacks.onClickButtonClonePreviousSlide();
         }
-      }
-    );
+      });
 
-    if (this.params.globals.get('isFullscreenSupported')) {
-      dom.append(buttonFullscreen.getDOM());
+      buttonsContainerRight.append(buttons.clonePreviousSlide.getDOM());
     }
 
-    return { dom, buttonLeft, buttonRight, buttonFullscreen };
+    if (this.params.globals.get('isFullscreenSupported')) {
+      buttons.fullscreen = new Button(
+        {
+          id: 'fullscreen',
+          type: 'pulse',
+          a11y: {
+            active: this.params.dictionary.get('a11y.exitFullscreen'),
+            inactive: this.params.dictionary.get('a11y.enterFullscreen'),
+            disabled: this.params.dictionary.get('a11y.fullScreenDisabled'),
+          },
+          classes: [
+            'h5p-idea-board-button',
+            'h5p-idea-board-button-fullscreen',
+            'enter-fullscreen'
+          ]
+        },
+        {
+          onClick: () => {
+            this.callbacks.onClickButtonFullscreen();
+          }
+        }
+      );
+
+      buttonsContainerRight.append(buttons.fullscreen.getDOM());
+    }
+
+    return { dom, buttons };
   }
 
   /**
@@ -152,51 +193,46 @@ export default class NavigationBar {
    */
   handleKeydown(event) {
     if (event.code === 'ArrowLeft' || event.code === 'ArrowUp') {
-      if (
-        this.currentTabbableButton === 'right') {
-        this.setButtonTabbable('left');
-      }
-      else {
-        this.setButtonTabbable('right');
-      }
+      this.moveButtonFocus(-1);
     }
     else if (event.code === 'ArrowRight' || event.code === 'ArrowDown') {
-      if (this.currentTabbableButton === 'left') {
-        this.setButtonTabbable('right');
-      }
-      else {
-        this.setButtonTabbable('left');
-      }
+      this.moveButtonFocus(1);
     }
     else if (event.code === 'Home') {
-      this.setButtonTabbable('left');
+      this.moveButtonFocus(0 - this.currentButtonIndex);
     }
     else if (event.code === 'End') {
-      this.setButtonTabbable('right');
+      this.moveButtonFocus(
+        Object.keys(this.buttons).length - 1 - this.currentButtonIndex
+      );
     }
     else {
       return;
     }
-
     event.preventDefault();
   }
 
   /**
-   * Set button tabbable.
-   * @param {string} name Name of the button.
+   * Move button focus.
+   * @param {number} offset Offset to move position by.
    */
-  setButtonTabbable(name) {
-    this.currentTabbableButton = name;
-
-    for (let key in this.buttons) {
-      if (key === name) {
-        this.buttons[key]?.setTabbable(true);
-        this.buttons[key]?.focus();
-      }
-      else {
-        this.buttons[key]?.setTabbable(false);
-      }
+  moveButtonFocus(offset) {
+    if (typeof offset !== 'number') {
+      return;
     }
+
+    if (
+      this.currentButtonIndex + offset < 0 ||
+      this.currentButtonIndex + offset > Object.keys(this.buttons).length - 1
+    ) {
+      return; // Don't cycle
+    }
+
+    Object.values(this.buttons)[this.currentButtonIndex].setAttribute('tabindex', '-1');
+    this.currentButtonIndex = this.currentButtonIndex + offset;
+    const focusButton = Object.values(this.buttons)[this.currentButtonIndex];
+    focusButton.setAttribute('tabindex', '0');
+    focusButton.focus();
   }
 
   /**
