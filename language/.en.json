@@ -89,39 +89,39 @@
       "fields": [
         {
           "label": "Previous content",
-          "default": "Go to previous content."
+          "default": "Go to previous content"
         },
         {
           "label": "Next content",
-          "default": "Go to next content."
+          "default": "Go to next content"
         },
         {
           "label": "Previous content disabled",
-          "default": "Going to previous content is currently not possible."
+          "default": "Going to previous content is currently not possible"
         },
         {
           "label": "Next content disabled",
-          "default": "Going to next content is currently not possible."
+          "default": "Going to next content is currently not possible"
         },
         {
           "label": "Clone previous slide",
-          "default": "Clone contents of previous slide to current slide."
+          "default": "Clone contents of previous slide to current slide"
         },
         {
           "label": "Clone previous slide disabled",
-          "default": "Cloning contents of previous slide is currently not possible."
+          "default": "Cloning contents of previous slide is currently not possible"
         },
         {
           "label": "Exit fullscreen",
-          "default": "Exit fullscreen mode."
+          "default": "Exit fullscreen mode"
         },
         {
           "label": "Enter fullscreen",
-          "default": "Enter fullscreen mode."
+          "default": "Enter fullscreen mode"
         },
         {
           "label": "Fullscreen disabled",
-          "default": "Going to fullscreen is currently not possible."
+          "default": "Going to fullscreen is currently not possible"
         },
         {
           "label": "Moved to page",

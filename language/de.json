@@ -89,39 +89,39 @@
       "fields": [
         {
           "label": "Vorheriger Inhalt",
-          "default": "Zum vorherigen Inhalt gehen."
+          "default": "Zum vorherigen Inhalt gehen"
         },
         {
           "label": "Nächster Inhalt",
-          "default": "Zum nächsten Inhalt gehen."
+          "default": "Zum nächsten Inhalt gehen"
         },
         {
           "label": "Vorheriger Inhalt deaktiviert",
-          "default": "Zum vorherigen Inhalt zu gehen ist derzeit nicht möglich."
+          "default": "Zum vorherigen Inhalt zu gehen ist derzeit nicht möglich"
         },
         {
           "label": "Nächster Inhalt deaktiviert",
-          "default": "Zum nächsten Inhalt zu gehen ist derzeit nicht möglich."
+          "default": "Zum nächsten Inhalt zu gehen ist derzeit nicht möglich"
         },
         {
           "label": "Kopiere vorherige Folie",
-          "default": "Kopiere die Inhalte der vorherigen Folie in die aktuelle Folie."
+          "default": "Kopiere die Inhalte der vorherigen Folie in die aktuelle Folie"
         },
         {
           "label": "Kopieren der vorherigen Folie deaktiviert",
-          "default": "Kopieren der Inhalte der vorherigen Folie ist derzeit nicht möglich."
+          "default": "Kopieren der Inhalte der vorherigen Folie ist derzeit nicht möglich"
         },
         {
           "label": "Vollbildmodus beenden",
-          "default": "Vollbildmodus beenden."
+          "default": "Vollbildmodus beenden"
         },
         {
           "label": "Vollbildmodus aktivieren",
-          "default": "Vollbildmodus aktivieren."
+          "default": "Vollbildmodus aktivieren"
         },
         {
           "label": "Vollbildmodus deaktiviert",
-          "default": "Vollbildmodus ist derzeit nicht möglich."
+          "default": "Vollbildmodus ist derzeit nicht möglich"
         },
         {
           "label": "Zu Seite gewechselt",
