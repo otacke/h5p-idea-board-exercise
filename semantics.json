@@ -92,16 +92,16 @@
             {
               "name": "numberTextFieldsCreated",
               "type": "number",
-              "label": "Number of text fields created",
-              "description": "Set the minimum number of text fields that must be created by the user to consider this idea board completed.",
+              "label": "Number of cards with text created",
+              "description": "Set the minimum number of cards with text that must be created by the user to consider this idea board completed.",
               "minimum": 0,
               "default": 0
             },
             {
               "name": "numberTextFieldsEdited",
               "type": "number",
-              "label": "Number of text fields edited",
-              "description": "Set the minimum number of text fields that must be edited by the user to consider this idea board completed.",
+              "label": "Number of cards with text edited",
+              "description": "Set the minimum number of cards with text that must be edited by the user to consider this idea board completed.",
               "minimum": 0,
               "default": 0
             }

@@ -39,12 +39,12 @@
             "description": "Definiere die Regeln, wann dieses Ideenboard als abgeschlossen gilt.",
             "fields": [
               {
-                "label": "Anzahl der erstellten Textfelder",
-                "description": "Lege die Mindestanzahl an Textfeldern fest, die die Nutzenden erstellen müssen, damit dieses Ideenboard als abgeschlossen gilt."
+                "label": "Anzahl der erstellten Karten mit Text",
+                "description": "Lege die Mindestanzahl an Karten mit Text fest, die die Nutzenden erstellen müssen, damit dieses Ideenboard als abgeschlossen gilt."
               },
               {
-                "label": "Anzahl der bearbeiteten Textfelder",
-                "description": "Lege die Mindestanzahl an Textfeldern fest, die die Nutzenden bearbeiten müssen, damit dieses Ideenboard als abgeschlossen gilt."
+                "label": "Anzahl der bearbeiteten Karten mit Text",
+                "description": "Lege die Mindestanzahl an Karten mit Text fest, die die Nutzenden bearbeiten müssen, damit dieses Ideenboard als abgeschlossen gilt."
               }
             ]
           },
