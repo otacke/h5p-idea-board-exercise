@@ -184,11 +184,16 @@
         "default": "Untitled"
       },
       {
-        "name": "dummy",
+        "name": "numberTextFieldsCreatedNote",
         "type": "text",
-        "label": "Dummy",
-        "default": "Dummy",
-        "widget": "none"
+        "label": "Note for task description of number of cards to be created",
+        "default": "You need to create at least @count card(s) with text in order to proceed."
+      },
+      {
+        "name": "numberTextFieldsEditedNote",
+        "type": "text",
+        "label": "Note for task description of number of cards to be edited",
+        "default": "You need to edit at least @count card(s) with text in order to proceed."
       }
     ]
   },

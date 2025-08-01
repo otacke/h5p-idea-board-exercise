@@ -79,8 +79,12 @@
           "default": "Ohne Titel"
         },
         {
-          "label": "Platzhalter",
-          "default": "Platzhalter"
+          "label": "Hinweis für die Aufgabenbeschreibung: Zu erstellende Karten",
+          "default": "Du musst mindestens @count Karte(n) mit Text erstellen, um fortzufahren."
+        },
+        {
+          "label": "Hinweis für die Aufgabenbeschreibung: Zu bearbeitende Karten",
+          "default": "Du musst mindestens @count Karte(n) mit Text bearbeiten, um fortzufahren."
         }
       ]
     },

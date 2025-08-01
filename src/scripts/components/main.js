@@ -186,7 +186,14 @@ export default class Main {
    */
   showPreviousPage() {
     this.pages.swipeLeft();
-    this.resizableArea.setPane2(this.boards.getTaskDescriptionDOM(this.pages.getCurrentPageIndex()));
+    this.updateTaskDescription();
+  }
+
+  /**
+   * Update the task description pane with the current board's task description.
+   */
+  updateTaskDescription() {
+    this.resizableArea.setPane2(this.boards.getTaskDescription(this.pages.getCurrentPageIndex()).getDOM());
   }
 
   /**
@@ -229,7 +236,7 @@ export default class Main {
     }
 
     this.pages.swipeRight();
-    this.resizableArea.setPane2(this.boards.getTaskDescriptionDOM(this.pages.getCurrentPageIndex()));
+    this.updateTaskDescription();
   }
 
   /**
@@ -380,7 +387,7 @@ export default class Main {
 
     this.boards.reset();
     this.pages.reset();
-    this.resizableArea.setPane2(this.boards.getTaskDescriptionDOM(this.pages.getCurrentPageIndex()));
+    this.resizableArea.setPane2(this.boards.getTaskDescription(this.pages.getCurrentPageIndex()).getDOM());
   }
 
   /**

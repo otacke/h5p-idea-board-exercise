@@ -1,4 +1,5 @@
 import { callOnceVisible, extend } from '@services/util.js';
+import taskDescription from './task-description/task-description.js';
 
 export default class Board {
 
@@ -21,9 +22,11 @@ export default class Board {
     this.dom = document.createElement('div');
     this.dom.classList.add('h5p-idea-board-exercise-board-instance');
 
-    this.taskDescriptionDOM = document.createElement('div');
-    this.taskDescriptionDOM.classList.add('h5p-idea-board-exercise-task-description');
-    this.taskDescriptionDOM.innerHTML = this.params.boardParams.taskDescription ?? '';
+    this.taskDescription = new taskDescription({
+      dictionary: this.params.dictionary,
+      description: this.params.boardParams.taskDescription,
+      completionRules: this.params.boardParams.completionRules,
+    });
 
     this.buildInstance(this.params.previousState);
     this.attachInstance();
@@ -148,8 +151,8 @@ export default class Board {
    * Get the DOM of the task description.
    * @returns {HTMLElement} DOM of the task description.
    */
-  getTaskDescriptionDOM() {
-    return this.taskDescriptionDOM;
+  getTaskDescription() {
+    return this.taskDescription;
   }
 
   /**

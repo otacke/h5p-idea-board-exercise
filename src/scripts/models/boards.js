@@ -24,13 +24,13 @@ export default class Boards {
     return board.getDOM();
   }
 
-  getTaskDescriptionDOM(index) {
+  getTaskDescription(index) {
     if (typeof index !== 'number' || index < 0 || index >= this.boards.length) {
       return null;
     }
 
     const board = this.boards[index];
-    return board.getTaskDescriptionDOM();
+    return board.getTaskDescription();
   }
 
   isCompleted(index) {
