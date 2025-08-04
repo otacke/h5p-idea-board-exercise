@@ -30,7 +30,7 @@
   }
 
   .pane {
-    --padding-default: min(0.5rem, 8px);
+    --padding-default: 0px;
     --padding-overlap: calc(var(--resizer-width) / 4);
 
     box-sizing: border-box;
@@ -43,7 +43,7 @@
       &>div {
         padding:
           var(--padding-default)
-          calc(var(--padding-overlap) + var(--resizer-width) / 2)
+          calc(var(--padding-overlap))
           var(--padding-default)
           var(--padding-default);
       }
