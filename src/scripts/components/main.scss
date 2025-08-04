@@ -1,7 +1,8 @@
 .h5p-idea-board-exercise-main {
+  container-type: inline-size;
+  container-name: h5p-idea-board-exercise-main;
+
   .h5p-idea-board-exercise-main-area {
-    container-type: inline-size;
-    container-name: h5p-idea-board-exercise-main-area;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
@@ -9,5 +10,11 @@
     margin-inline: auto;
     max-height: var(--h5p-idea-board-exercise-main-max-height);
     max-width: var(--h5p-idea-board-exercise-main-max-width);
+  }
+}
+
+@container h5p-idea-board-exercise-main (max-width: 720px) {
+  .h5p-idea-board-exercise-main .h5p-idea-board-exercise-main-area {
+    max-height: unset;
   }
 }

@@ -57,7 +57,7 @@
   }
 }
 
-@container h5p-idea-board-exercise-main-area (max-width: 720px) {
+@container h5p-idea-board-exercise-main (max-width: 720px) {
   .h5p-idea-board-exercise-resizable-area {
     flex-direction: column;
 
@@ -68,6 +68,7 @@
     }
 
     .pane.second {
+      max-height: unset;
       order: 1;
       overflow: auto;
       width: 100%;
