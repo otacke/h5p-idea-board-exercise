@@ -30,7 +30,6 @@
   }
 
   .pane {
-    --padding-default: 0px;
     --padding-overlap: calc(var(--resizer-width) / 4);
 
     box-sizing: border-box;
@@ -41,11 +40,7 @@
       width: var(--resizer-position);
 
       &>div {
-        padding:
-          var(--padding-default)
-          calc(var(--padding-overlap))
-          var(--padding-default)
-          var(--padding-default);
+        padding: 0 calc(var(--padding-overlap)) 0 0;
       }
     }
 
@@ -55,11 +50,7 @@
       width: calc(100% - var(--resizer-position));
 
       &>div {
-        padding:
-          var(--padding-default)
-          var(--padding-default)
-          var(--padding-default)
-          calc(var(--padding-overlap) + var(--resizer-width) / 2);
+        padding: 0.5rem calc(var(--padding-overlap) + var(--resizer-width) / 2);
       }
     }
   }
