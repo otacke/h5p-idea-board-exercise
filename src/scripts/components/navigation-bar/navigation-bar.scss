@@ -4,7 +4,7 @@
   --border-size: 2px;
 
   align-items: center;
-  box-shadow: 10px 10px 30px var(--color-shadow-light);
+  border-top: 2px solid var(--color-primary-5);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
