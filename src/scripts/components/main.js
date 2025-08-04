@@ -428,4 +428,16 @@ export default class Main {
       this.dom.style.removeProperty('--h5p-idea-board-exercise-main-max-width');
     }
   }
+
+  /**
+   * Resize after call from H5P core.
+   */
+  resize() {
+    if (H5P.isFullscreen) {
+      return;
+    }
+
+    const pageHeight = this.pages.getPageAtIndex(0).getHeight();
+    this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${pageHeight}px`);
+  }
 }

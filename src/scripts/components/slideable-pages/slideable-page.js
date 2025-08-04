@@ -27,6 +27,14 @@ export default class SlideablePage {
   }
 
   /**
+   * Get height of the slideable page.
+   * @returns {number} Height of the slideable page.
+   */
+  getHeight() {
+    return this.dom.getBoundingClientRect().height;
+  }
+
+  /**
    * Update page.
    * @param {object} [params] Parameters.
    */

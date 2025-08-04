@@ -71,6 +71,10 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
         }
       }
     );
+
+    this.on('resize', () => {
+      this.main.resize();
+    });
   }
 
   /**

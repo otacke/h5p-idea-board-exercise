@@ -33,7 +33,7 @@
     --padding-overlap: calc(var(--resizer-width) / 4);
 
     box-sizing: border-box;
-    overflow: auto;
+    overflow: hidden;
 
     &.first {
       background: var(--color-background);
@@ -47,6 +47,7 @@
     &.second {
       background: var(--color-primary-5);
       max-height: var(--h5p-idea-board-exercise-main-max-height);
+      overflow-y: auto;
       width: calc(100% - var(--resizer-position));
 
       &>div {
