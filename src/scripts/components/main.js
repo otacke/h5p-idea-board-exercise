@@ -120,7 +120,7 @@ export default class Main {
       dictionary: params.dictionary,
       globals: params.globals,
       minValue: 20,
-      position: 70,
+      position: 75,
     });
 
     this.resizableArea.setPane1(this.pages.getDOM());
