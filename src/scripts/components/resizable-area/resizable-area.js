@@ -10,8 +10,6 @@ const MAX_VALUE = 100;
 /** constant {number} DEFAULT_VALUE Default value for the resizable area */
 const DEFAULT_VALUE = 50;
 
-
-
 export default class ResizableArea {
 
   /**
