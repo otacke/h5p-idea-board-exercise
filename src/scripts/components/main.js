@@ -437,7 +437,7 @@ export default class Main {
       return;
     }
 
-    const pageHeight = this.pages.getPageAtIndex(0).getHeight();
+    const pageHeight = this.pages.getPageAtIndex(this.pages.getCurrentPageIndex()).getHeight();
     this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${pageHeight}px`);
   }
 }
