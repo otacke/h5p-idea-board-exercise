@@ -1,5 +1,6 @@
 import { callOnceVisible, extend } from '@services/util.js';
 import taskDescription from './task-description/task-description.js';
+import './board.scss';
 
 export default class Board {
 
