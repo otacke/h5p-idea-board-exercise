@@ -24,6 +24,20 @@ export default class Boards {
     return board.getDOM();
   }
 
+  /**
+   * Get the aspect ratio of a board.
+   * @param {number} index Index of the board.
+   * @returns {number|null} Aspect ratio (width / height) or null if not found.
+   */
+  getAspectRatio(index) {
+    if (typeof index !== 'number' || index < 0 || index >= this.boards.length) {
+      return null;
+    }
+
+    const board = this.boards[index];
+    return board.getAspectRatio();
+  }
+
   getTaskDescription(index) {
     if (typeof index !== 'number' || index < 0 || index >= this.boards.length) {
       return null;

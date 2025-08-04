@@ -416,7 +416,10 @@ export default class Main {
 
         this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${availableHeight}px`);
 
-        const availableWidth = availableHeight * this.pages.getAspectRatio();
+        // All boards have the same aspect ratio, so we can use the first one
+        const aspectRatio = this.boards.getAspectRatio(0);
+        const availableWidth = availableHeight * aspectRatio;
+
         this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-width', `${availableWidth}px`);
       }, FULL_SCREEN_DELAY_LARGE_MS); // Some devices don't register user gesture before call to to requestFullscreen
     }

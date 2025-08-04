@@ -157,6 +157,15 @@ export default class Board {
   }
 
   /**
+   * Get the aspect ratio of the board.
+   * @returns {number} Aspect ratio (width / height).
+   */
+  getAspectRatio() {
+    const rect = this.dom.getBoundingClientRect();
+    return rect.width / rect.height;
+  }
+
+  /**
    * Get the current state of the board when no answer has been given.
    * @returns {object} Current state of the board.
    */
