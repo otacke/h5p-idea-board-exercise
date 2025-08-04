@@ -90,18 +90,18 @@
           "expanded": true,
           "fields": [
             {
-              "name": "numberTextFieldsCreated",
+              "name": "numberCardsCreated",
               "type": "number",
-              "label": "Number of cards with text created",
-              "description": "Set the minimum number of cards with text that must be created by the user to consider this idea board completed.",
+              "label": "Number of cards created",
+              "description": "Set the minimum number of cards that must be created by the user to consider this idea board completed.",
               "minimum": 0,
               "default": 0
             },
             {
-              "name": "numberTextFieldsEdited",
+              "name": "numberCardsEdited",
               "type": "number",
-              "label": "Number of cards with text edited",
-              "description": "Set the minimum number of cards with text that must be edited by the user to consider this idea board completed.",
+              "label": "Number of cards edited",
+              "description": "Set the minimum number of cards that must be edited by the user to consider this idea board completed.",
               "minimum": 0,
               "default": 0
             }
@@ -184,16 +184,16 @@
         "default": "Untitled"
       },
       {
-        "name": "numberTextFieldsCreatedNote",
+        "name": "numberCardsCreatedNote",
         "type": "text",
         "label": "Note for task description of number of cards to be created",
-        "default": "You need to create at least @count card(s) with text in order to proceed."
+        "default": "You need to create at least @count card(s) in order to proceed."
       },
       {
-        "name": "numberTextFieldsEditedNote",
+        "name": "numberCardsEditedNote",
         "type": "text",
         "label": "Note for task description of number of cards to be edited",
-        "default": "You need to edit at least @count card(s) with text in order to proceed."
+        "default": "You need to edit at least @count card(s) in order to proceed."
       }
     ]
   },

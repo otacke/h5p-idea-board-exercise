@@ -13,7 +13,9 @@ export default class taskDescription {
     this.dom.appendChild(text);
 
     const descriptionNotes = this.buildNotesList(this.params.completionRules);
-    this.dom.appendChild(descriptionNotes);
+    if (descriptionNotes.childElementCount > 0) {
+      this.dom.appendChild(descriptionNotes);
+    }
   }
 
   getDOM() {
@@ -24,12 +26,13 @@ export default class taskDescription {
     const notesList = document.createElement('ul');
     notesList.classList.add('h5p-idea-board-exercise-task-description-notes');
     Object.entries(rules ?? {})
-      .filter(([key, value]) => !!value)
+      .filter(([key, value]) => {
+        return !!value && this.params.dictionary.get(`l10n.${key}Note`);
+      })
       .forEach(([key, value]) => {
         const listItem = this.buildNotesListItem(key, value);
         notesList.appendChild(listItem);
       });
-    this.dom.appendChild(notesList);
 
     return notesList;
   }

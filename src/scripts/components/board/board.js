@@ -118,8 +118,8 @@ export default class Board {
 
     this.requiresCompletion = boardParams.requiresCompletionToProgress &&
       (
-        boardParams.completionRules?.numberTextFieldsCreated > 0 ||
-        boardParams.completionRules?.numberTextFieldsEdited > 0
+        boardParams.completionRules?.numberCardsCreated > 0 ||
+        boardParams.completionRules?.numberCardsEdited > 0
       );
 
     this.completed = new Set();
@@ -270,16 +270,14 @@ export default class Board {
       return true;
     }
 
-    const numberTextFieldsCreated = Array.from(this.completed)
-      .filter((item) => item.type === 'added').length;
+    const numberCardsCreated = Array.from(this.completed).filter((item) => item.type === 'added').length;
 
-    if (numberTextFieldsCreated < this.params.boardParams.completionRules?.numberTextFieldsCreated) {
+    if (numberCardsCreated < this.params.boardParams.completionRules?.numberCardsCreated) {
       return false;
     }
-    const numberTextFieldsEdited = Array.from(this.completed)
-      .filter((item) => item.type === 'edited').length;
 
-    if (numberTextFieldsEdited < this.params.boardParams.completionRules?.numberTextFieldsEdited) {
+    const numberCardsEdited = Array.from(this.completed).filter((item) => item.type === 'edited').length;
+    if (numberCardsEdited < this.params.boardParams.completionRules?.numberCardsEdited) {
       return false;
     }
 
