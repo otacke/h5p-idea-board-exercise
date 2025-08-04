@@ -2,8 +2,8 @@
   "title": "Idea Board Exercise",
   "description": "Chain multiple Idea Boards to form an exercise",
   "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 1,
+  "minorVersion": 3,
+  "patchVersion": 0,
   "runnable": 1,
   "author": "Oliver Tacke",
   "license": "MIT",
@@ -36,7 +36,7 @@
     {
       "machineName": "H5PEditor.IdeaBoardExerciseBoard",
       "majorVersion": 1,
-      "minorVersion": 2
+      "minorVersion": 3
     },
     {
       "machineName": "H5PEditor.VerticalTabs",
