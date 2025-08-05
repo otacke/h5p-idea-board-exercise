@@ -1,5 +1,9 @@
 .h5p-idea-board-exercise-board-instance {
   &.h5p-idea-board .h5p-idea-board-main {
     margin: 0;
+
+    .h5p-idea-board-toolbar-tool-bar {
+      margin-bottom: 0;
+    }
   }
 }
