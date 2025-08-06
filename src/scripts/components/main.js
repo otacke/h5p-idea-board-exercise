@@ -1,4 +1,5 @@
 import Board from '@components/board/board.js';
+import ConfirmationDialog from '@components/confirmation-dialog/confirmation-dialog.js';
 import ResizableArea from '@components/resizable-area/resizable-area.js';
 import NavigationBar from '@components/navigation-bar/navigation-bar.js';
 import SlideablePages from './slideable-pages/slideable-pages.js';
@@ -59,10 +60,7 @@ export default class Main {
           this.goForward();
         },
         onClickButtonClonePreviousSlide: () => {
-          this.cloneBoardFromTo(
-            this.pages.getCurrentPageIndex() - 1,
-            this.pages.getCurrentPageIndex()
-          );
+          this.askForCloneBoardConfirmation();
         },
         onClickButtonFullscreen: () => {
           this.callbacks.onClickButtonFullscreen();
@@ -148,6 +146,12 @@ export default class Main {
         this.goForward();
       }
     }
+
+    // Confirmation Dialog
+    this.confirmationDialog = new ConfirmationDialog({
+      globals: params.globals
+    });
+    this.dom.append(this.confirmationDialog.getDOM());
   }
 
   /**
@@ -250,6 +254,27 @@ export default class Main {
     else {
       this.navigationBar.disableButton('clonePreviousSlide');
     }
+  }
+
+  /**
+   * Ask for confirmation to clone the current board.
+   */
+  askForCloneBoardConfirmation() {
+    this.confirmationDialog.update(
+      {
+        headerText: this.params.dictionary.get('l10n.cloneSlideDialogHeader'),
+        dialogText: this.params.dictionary.get('l10n.cloneSlideDialog'),
+        confirmText: this.params.dictionary.get('l10n.cloneSlideDialogConfirm'),
+        cancelText: this.params.dictionary.get('l10n.cloneSlideDialogCancel'),
+      },
+      {
+        onConfirmed: () => {
+          this.cloneBoardFromTo(this.pages.getCurrentPageIndex() - 1, this.pages.getCurrentPageIndex());
+        }
+      }
+    );
+
+    this.confirmationDialog.show();
   }
 
   /**

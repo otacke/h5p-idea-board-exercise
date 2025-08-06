@@ -194,6 +194,30 @@
         "type": "text",
         "label": "Note for task description of number of cards to be edited",
         "default": "You need to edit at least @count card(s) in order to proceed."
+      },
+      {
+        "name": "cloneSlideDialogHeader",
+        "type": "text",
+        "label": "Header for clone slide dialog",
+        "default": "Overwrite current cards?"
+      },
+      {
+        "name": "cloneSlideDialog",
+        "type": "text",
+        "label": "Text for clone slide dialog",
+        "default": "Do you really want to clone the previous slide? This will replace all cards on the current slide."
+      },
+      {
+        "name": "cloneSlideDialogConfirm",
+        "type": "text",
+        "label": "Label for clone slide dialog confirm button",
+        "default": "Yes, clone and replace"
+      },
+      {
+        "name": "cloneSlideDialogCancel",
+        "type": "text",
+        "label": "Label for clone slide dialog cancel button",
+        "default": "No, cancel"
       }
     ]
   },

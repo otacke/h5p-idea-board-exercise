@@ -85,6 +85,22 @@
         {
           "label": "Hinweis für die Aufgabenbeschreibung: Zu bearbeitende Karten",
           "default": "Du musst mindestens @count Karte(n) bearbeiten, um fortzufahren."
+        },
+        {
+          "label": "Kopfzeile für den Dialog zum Klonen der vorherigen Folie",
+          "default": "Aktuelle Karten überschreiben?"
+        },
+        {
+          "label": "Text für den Dialog zum Klonen der Folie",
+          "default": "Möchtenst du die vorherige Folie wirklich klonen? Dadurch werden alle Karten auf der aktuellen Folie ersetzt."
+        },
+        {
+          "label": "Beschriftung des \"Bestätigen-Buttons\" für den Dialog zum Klonen der Folie",
+          "default": "Ja, klonen und ersetzen"
+        },
+        {
+          "label": "Beschriftung des \"Abbrechen-Buttons\" für den Dialog zum Klonen der Folie",
+          "default": "Nein, abbrechen"
         }
       ]
     },
