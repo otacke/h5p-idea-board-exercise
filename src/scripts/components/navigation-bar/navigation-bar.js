@@ -188,6 +188,21 @@ export default class NavigationBar {
   }
 
   /**
+   * Get the minimum height of the navigation bar based on its children.
+   * @returns {number} Minimum height of the navigation bar.
+   */
+  getMinHeight() {
+    const childrenMaxHeight = Array.from(this.dom.children).reduce((max, child) => {
+      return Math.max(max, child.offsetHeight);
+    }, 0);
+
+    const padding = parseFloat(getComputedStyle(this.dom).paddingTop) +
+    parseFloat(getComputedStyle(this.dom).paddingBottom);
+
+    return childrenMaxHeight + padding;
+  }
+
+  /**
    * Handle key down.
    * @param {KeyboardEvent} event Keyboard event.
    */

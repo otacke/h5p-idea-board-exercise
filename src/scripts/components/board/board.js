@@ -165,6 +165,14 @@ export default class Board {
     return rect.width / rect.height;
   }
 
+  getToolbarMinHeight() {
+    return this.instance.getToolbarMinHeight();
+  }
+
+  getInstanceAspectRatio() {
+    return this.instance.getBoardAspectRatio();
+  }
+
   /**
    * Get the current state of the board when no answer has been given.
    * @returns {object} Current state of the board.

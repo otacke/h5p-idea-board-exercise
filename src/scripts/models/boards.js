@@ -38,6 +38,34 @@ export default class Boards {
     return board.getAspectRatio();
   }
 
+  /**
+   * Get the minimum height of the toolbar.
+   * @param {number} index Index of the board.
+   * @returns {number} Minimum height of the toolbar.
+   */
+  getBoardToolbarMinHeight(index) {
+    if (typeof index !== 'number' || index < 0 || index >= this.boards.length) {
+      return null;
+    }
+
+    const board = this.boards[index];
+    return board.getToolbarMinHeight();
+  }
+
+  /**
+   * Get the aspect ratio of a board.
+   * @param {number} index Index of the board.
+   * @returns {number|null} Aspect ratio (width / height) or null if not found.
+   */
+  getBoardAspectRatio(index) {
+    if (typeof index !== 'number' || index < 0 || index >= this.boards.length) {
+      return null;
+    }
+
+    const board = this.boards[index];
+    return board.getInstanceAspectRatio();
+  }
+
   getTaskDescription(index) {
     if (typeof index !== 'number' || index < 0 || index >= this.boards.length) {
       return null;
