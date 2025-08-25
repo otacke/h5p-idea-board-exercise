@@ -1,10 +1,9 @@
 .h5p-idea-board-button {
   background-color: var(--color-primary-5);
-  border: 2px solid var(--color-text-light); /* Same px value as used by Joubel in Interactive Book */
+  border: var(--border-size) solid var(--color-text-light); /* Same px value as used by Joubel in Interactive Book */
   border-radius: 3px; /* Same px value as used by Joubel in Interactive Book */
   color: var(--color-primary);
-  flex-shrink: 0;
-  font-size: 1em;
+  font-size: var(--background-size, 1em);
   height: var(--button-size);
   padding: 0;
   position: relative;
@@ -16,10 +15,9 @@
     font-size: var(--background-size);
     height: var(--background-size);
     left: 50%;
-    margin-left: calc(-1 * var(--background-size) / 2);
-    margin-top: calc(-1 * var(--background-size) / 2);
     position: absolute;
     top: 50%;
+    transform: translate(-50%, -50%);
     width: var(--background-size);
   }
 

@@ -1,6 +1,6 @@
 .h5p-idea-board-navigation-bar {
-  --button-size: 3em;
-  --background-size: 1.25em;
+  --button-size: 3rem;
+  --background-size: 1.15rem;
   --border-size: 2px;
 
   align-items: center;
@@ -11,19 +11,17 @@
   margin-inline: auto;
   max-width: var(--h5p-idea-board-exercise-main-max-width);
   overflow: hidden;
-  padding: 0.25rem;
+  padding: 0.125rem;
 
   .h5p-idea-board-navigation-bar-buttons-container-left {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.25rem;
   }
   .h5p-idea-board-navigation-bar-buttons-container-right {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.25rem;
     margin-left: auto;
   }
 }
