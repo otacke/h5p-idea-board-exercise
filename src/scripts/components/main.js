@@ -19,6 +19,9 @@ const FULL_SCREEN_DELAY_LARGE_MS = 300;
 /** @constant {number} INDEX_OF_TASK_DESCRIPTION_PANE Index of the task description pane in the resizable area. */
 const INDEX_OF_TASK_DESCRIPTION_PANE = 1;
 
+/** @constant {number} MIN_WIDTH_PANE_2_PX Minimum width for pane 2 (in pixels). */
+const MIN_WIDTH_PANE_2_PX = 200;
+
 export default class Main {
 
   /**
@@ -457,7 +460,7 @@ export default class Main {
    */
   updateFixedWidth() {
     const flexDirection = this.resizableArea.getFlexDirection();
-    const boardToolbarHeight = this.boards.getBoardToolbarMinHeight(0);
+    this.boardToolbarHeight = this.boardToolbarHeight ?? this.boards.getBoardToolbarMinHeight(0);
     const navigationBarHeight = this.navigationBar.getMinHeight();
 
     const guaranteedHeight = window.innerHeight - navigationBarHeight;
@@ -468,8 +471,12 @@ export default class Main {
     this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${availableHeight}px`);
 
     // All boards have the same aspect ratio, so we can use the first one
-    const aspectRatio = this.boards.getBoardAspectRatio(0);
-    const availableWidth = (availableHeight - boardToolbarHeight) * aspectRatio;
+    this.boardsAspectRatio = this.boardsAspectRatio ?? this.boards.getBoardAspectRatio(0);
+    let availableWidth = (availableHeight - this.boardToolbarHeight) * this.boardsAspectRatio;
+
+    if (window.innerWidth - availableWidth < MIN_WIDTH_PANE_2_PX) {
+      availableWidth = window.innerWidth - MIN_WIDTH_PANE_2_PX;
+    }
 
     this.resizableArea.setFixedWidth(availableWidth, window.innerWidth - availableWidth);
   }
