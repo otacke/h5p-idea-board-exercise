@@ -11,7 +11,7 @@ import { extend } from '@services/util.js';
 import './main.scss';
 
 /** @constant {number} FULL_SCREEN_DELAY_SMALL_MS Time some browsers need to change full screen. */
-const FULL_SCREEN_DELAY_SMALL_MS = 100;
+const FULL_SCREEN_DELAY_SMALL_MS = 200;
 
 /** @constant {number} FULL_SCREEN_DELAY_LARGE_MS Time some browsers need to change full screen. */
 const FULL_SCREEN_DELAY_LARGE_MS = 300;
