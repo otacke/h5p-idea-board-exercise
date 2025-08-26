@@ -101,6 +101,10 @@
         {
           "label": "Beschriftung des \"Abbrechen-Buttons\" für den Dialog zum Klonen der Folie",
           "default": "Nein, abbrechen"
+        },
+        {
+          "label": "Zusammenfassung",
+          "default": "Zusammenfassung"
         }
       ]
     },
@@ -156,6 +160,10 @@
           "label": "Aktuelle Seite",
           "default": "@current / @total",
           "description": "@current und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt."
+        },
+        {
+          "label": "Fortschrittsanzeige",
+          "default": "Fortschrittsanzeige"
         }
       ]
     }

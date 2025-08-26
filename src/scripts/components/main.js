@@ -340,7 +340,14 @@ export default class Main {
 
     const right = currentBoardWasCompleted && !this.isShowingSummary && hasMorePages;
 
-    this.navigationBar.update({ left: left, right: right });
+    this.navigationBar.update({
+      left: left, right: right,
+      now: currentPageIndex + 1,
+      max: this.pages.getLength(),
+      text: this.isShowingSummary ? this.params.dictionary.get('l10n.summary') : ''
+    });
+
+    this.navigationBar.toggleProgressTextMode(this.isShowingSummary);
 
     this.updateSlideCloneButton();
   }

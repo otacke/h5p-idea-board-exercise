@@ -218,6 +218,12 @@
         "type": "text",
         "label": "Label for clone slide dialog cancel button",
         "default": "No, cancel"
+      },
+      {
+        "name": "summary",
+        "type": "text",
+        "label": "Summary",
+        "default": "Summary"
       }
     ]
   },
@@ -300,6 +306,12 @@
         "label": "Current page",
         "default": "@current / @total",
         "description": "@current and @total are placeholders and will be replaced by the respective values."
+      },
+      {
+        "name": "progressIndicator",
+        "type": "text",
+        "label": "Progress indicator",
+        "default": "Progress indicator"
       }
     ]
   }

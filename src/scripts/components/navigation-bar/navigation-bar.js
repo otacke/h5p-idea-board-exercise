@@ -1,4 +1,5 @@
 import Button from './button.js';
+import ProgressIndicator from './progress-indicator.js';
 import { extend } from '@services/util.js';
 import './navigation-bar.scss';
 
@@ -69,6 +70,11 @@ export default class NavigationBar {
     const buttonsContainerLeft = document.createElement('div');
     buttonsContainerLeft.classList.add('h5p-idea-board-navigation-bar-buttons-container-left');
     dom.append(buttonsContainerLeft);
+
+    this.progressIndicator = new ProgressIndicator({
+      dictionary: this.params.dictionary
+    });
+    dom.append(this.progressIndicator.getDOM());
 
     const buttonsContainerRight = document.createElement('div');
     buttonsContainerRight.classList.add('h5p-idea-board-navigation-bar-buttons-container-right');
@@ -334,5 +340,13 @@ export default class NavigationBar {
         this.disableButton('right');
       }
     }
+
+    this.progressIndicator.update({
+      now: params.now, min: params.min, max: params.max, text: params.text
+    });
+  }
+
+  toggleProgressTextMode(on) {
+    this.progressIndicator.toggleTextMode(on);
   }
 }
