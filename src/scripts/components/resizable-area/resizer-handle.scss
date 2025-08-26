@@ -13,7 +13,7 @@
   .h5p-idea-board-exercise-resizer-bar {
     background-color: var(--color-primary);
     height: 100%;
-    margin: 0 auto;
+    margin: 0 0.25rem;
     opacity: 0.3;
     transition: width 0.2s ease-in-out 0.1s, opacity 0.2s ease-in-out 0.1s;
     width: var(--resizing-width);
@@ -27,6 +27,10 @@
 
   &:active .h5p-idea-board-exercise-resizer-bar {
     background-color: var(--color-primary);
+  }
+
+  &.display-none {
+    display: none;
   }
 }
 

@@ -37,7 +37,7 @@
 
     &.first {
       background: var(--color-background);
-      width: var(--resizer-position);
+      width: var(--fixed-width, var(--resizer-position));
 
       &>div {
         padding: 0 calc(var(--padding-overlap)) 0 0;
@@ -48,7 +48,7 @@
       background: var(--color-primary-5);
       max-height: var(--h5p-idea-board-exercise-main-max-height);
       overflow-y: auto;
-      width: calc(100% - var(--resizer-position));
+      width: var(--fixed-width, calc(100% - var(--resizer-position)));
 
       &>div {
         padding: 0.5rem calc(var(--padding-overlap) + var(--resizer-width) / 2);

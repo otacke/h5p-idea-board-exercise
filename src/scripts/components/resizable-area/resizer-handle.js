@@ -154,6 +154,13 @@ export default class ResizerHandle {
   }
 
   /**
+   * Hide.
+   */
+  hide() {
+    this.dom.classList.add('display-none');
+  }
+
+  /**
    * Set the position of the resizer handle.
    * @param {number} position Position to set, must be between MIN_VALUE and MAX_VALUE.
    */
@@ -165,5 +172,12 @@ export default class ResizerHandle {
     this.position = position;
 
     this.dom.setAttribute('aria-valuenow', this.position);
+  }
+
+  /**
+   * Show.
+   */
+  show() {
+    this.dom.classList.remove('display-none');
   }
 }

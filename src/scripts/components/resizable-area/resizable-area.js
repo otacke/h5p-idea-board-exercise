@@ -130,6 +130,24 @@ export default class ResizableArea {
   }
 
   /**
+   * Set fixed width for the panes.
+   * @param {number} widthPane1 Fixed width for pane 1.
+   * @param {number} widthPane2 Fixed width for pane 2.
+   */
+  setFixedWidth(widthPane1, widthPane2) {
+    if (typeof widthPane1 !== 'number' || typeof widthPane2 !== 'number') {
+      this.pane1.style.setProperty('--fixed-width', '');
+      this.pane2.style.setProperty('--fixed-width', '');
+      this.resizer.show();
+    }
+    else {
+      this.pane1.style.setProperty('--fixed-width', `${widthPane1}px`);
+      this.pane2.style.setProperty('--fixed-width', `${widthPane2}px`);
+      this.resizer.hide();
+    }
+  }
+
+  /**
    * Set content for pane 1.
    * @param {HTMLElement} dom Content to set in pane 1.
    */

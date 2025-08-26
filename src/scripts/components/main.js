@@ -10,7 +10,10 @@ import { extend } from '@services/util.js';
 
 import './main.scss';
 
-/** @constant {number} FULL_SCREEN_DELAY_LARGE_MS Time some browsers need to go to full screen. */
+/** @constant {number} FULL_SCREEN_DELAY_SMALL_MS Time some browsers need to change full screen. */
+const FULL_SCREEN_DELAY_SMALL_MS = 100;
+
+/** @constant {number} FULL_SCREEN_DELAY_LARGE_MS Time some browsers need to change full screen. */
 const FULL_SCREEN_DELAY_LARGE_MS = 300;
 
 /** @constant {number} INDEX_OF_TASK_DESCRIPTION_PANE Index of the task description pane in the resizable area. */
@@ -439,29 +442,44 @@ export default class Main {
 
     if (shouldBeFullscreen) {
       window.setTimeout(() => {
-        const flexDirection = this.resizableArea.getFlexDirection();
-
-        const boardToolbarHeight = this.boards.getBoardToolbarMinHeight(0);
-        const navigationBarHeight = this.navigationBar.getMinHeight();
-
-        const guaranteedHeight = window.innerHeight - navigationBarHeight;
-        const availableHeight = (flexDirection === 'row') ?
-          guaranteedHeight :
-          guaranteedHeight - this.resizableArea.getPaneHeight(INDEX_OF_TASK_DESCRIPTION_PANE);
-
-        this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${availableHeight}px`);
-
-        // All boards have the same aspect ratio, so we can use the first one
-        const aspectRatio = this.boards.getBoardAspectRatio(0);
-        const availableWidth = (availableHeight - boardToolbarHeight) * aspectRatio;
-
-        this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-width', `${availableWidth}px`);
+        this.updateFixedWidth();
       }, FULL_SCREEN_DELAY_LARGE_MS); // Some devices don't register user gesture before call to to requestFullscreen
     }
     else {
-      this.dom.style.removeProperty('--h5p-idea-board-exercise-main-max-height');
-      this.dom.style.removeProperty('--h5p-idea-board-exercise-main-max-width');
+      window.setTimeout(() => {
+        this.params.globals.get('resize')();
+      }, FULL_SCREEN_DELAY_SMALL_MS);
     }
+  }
+
+  /**
+   * Update the fixed width of the resizable area.
+   */
+  updateFixedWidth() {
+    const flexDirection = this.resizableArea.getFlexDirection();
+    const boardToolbarHeight = this.boards.getBoardToolbarMinHeight(0);
+    const navigationBarHeight = this.navigationBar.getMinHeight();
+
+    const guaranteedHeight = window.innerHeight - navigationBarHeight;
+    const availableHeight = (flexDirection === 'row') ?
+      guaranteedHeight :
+      guaranteedHeight - this.resizableArea.getPaneHeight(INDEX_OF_TASK_DESCRIPTION_PANE);
+
+    this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${availableHeight}px`);
+
+    // All boards have the same aspect ratio, so we can use the first one
+    const aspectRatio = this.boards.getBoardAspectRatio(0);
+    const availableWidth = (availableHeight - boardToolbarHeight) * aspectRatio;
+
+    this.resizableArea.setFixedWidth(availableWidth, window.innerWidth - availableWidth);
+  }
+
+  /**
+   * Unset the fixed width of the resizable area.
+   */
+  unsetFixedWidth() {
+    this.dom.style.removeProperty('--h5p-idea-board-exercise-main-max-height');
+    this.resizableArea.setFixedWidth();
   }
 
   /**
@@ -469,10 +487,16 @@ export default class Main {
    */
   resize() {
     if (H5P.isFullscreen) {
-      return;
+      this.unsetFixedWidth();
+      window.clearTimeout(this.timeoutUpdateFixedWidth);
+      this.timeoutUpdateFixedWidth = window.requestAnimationFrame(() => {
+        this.updateFixedWidth();
+      });
     }
-
-    const pageHeight = this.pages.getPageAtIndex(this.pages.getCurrentPageIndex()).getHeight();
-    this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${pageHeight}px`);
+    else {
+      this.unsetFixedWidth();
+      const pageHeight = this.pages.getPageAtIndex(this.pages.getCurrentPageIndex()).getHeight();
+      this.dom.style.setProperty('--h5p-idea-board-exercise-main-max-height', `${pageHeight}px`);
+    }
   }
 }
