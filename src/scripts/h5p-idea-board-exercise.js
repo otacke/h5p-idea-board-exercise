@@ -72,6 +72,14 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
       }
     );
 
+    this.on('enterFullScreen', () => {
+      this.toggleFullscreen(true);
+    });
+
+    this.on('exitFullScreen', () => {
+      this.toggleFullscreen(false);
+    });
+
     this.on('resize', () => {
       this.main.resize();
     });
@@ -92,30 +100,7 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
    * Handle fullscreen button clicked.
    */
   handleFullscreenClicked() {
-    this.toggleFullscreen();
-  }
-
-  /**
-   * Toggle fullscreen button.
-   * @param {string|boolean} state enter|false for enter, exit|true for exit.
-   */
-  toggleFullscreen(state) {
-    if (!this.dom) {
-      return;
-    }
-
-    switch (state) {
-      case 'enter':
-        state = false;
-        break;
-
-      case 'exit':
-        state = true;
-        break;
-
-      default:
-        state = typeof state === 'boolean' ? state : !H5P.isFullscreen;
-    }
+    const state = !H5P.isFullscreen;
 
     if (state) {
       this.container = this.container || this.dom.closest('.h5p-container');
@@ -126,7 +111,19 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
     else {
       H5P.exitFullScreen();
     }
+  }
 
-    this.main.toggleFullscreen(state);
+  /**
+   * Toggle fullscreen button.
+   * @param {boolean} state true for enter, false for exit.
+   */
+  toggleFullscreen(state) {
+    if (!this.dom) {
+      return;
+    }
+
+    const targetState = typeof state === 'boolean' ? state : H5P.isFullscreen;
+
+    this.main.toggleFullscreen(targetState);
   }
 }
