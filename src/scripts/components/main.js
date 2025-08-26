@@ -460,8 +460,12 @@ export default class Main {
    */
   updateFixedWidth() {
     const flexDirection = this.resizableArea.getFlexDirection();
-    this.boardToolbarHeight = this.boardToolbarHeight ?? this.boards.getBoardToolbarMinHeight(0);
     const navigationBarHeight = this.navigationBar.getMinHeight();
+    this.boardToolbarHeight = this.boardToolbarHeight ?? this.boards.getBoardToolbarMinHeight(0);
+
+    if (this.boardToolbarHeight === 0) {
+      return; // Not ready yet
+    }
 
     const guaranteedHeight = window.innerHeight - navigationBarHeight;
     const availableHeight = (flexDirection === 'row') ?
