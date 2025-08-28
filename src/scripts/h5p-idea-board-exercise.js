@@ -10,6 +10,9 @@ import '@styles/h5p-idea-board-exercise.scss';
 /** @constant {string} DEFAULT_LANGUAGE_TAG Default language tag used if not specified in metadata. */
 const DEFAULT_LANGUAGE_TAG = 'en';
 
+/** @constant {number} FULL_SCREEN_DELAY_LARGE_MS Time some browsers need to change full screen. */
+const FULL_SCREEN_DELAY_LARGE_MS = 300;
+
 export default class IdeaBoardExercise extends H5P.EventDispatcher {
   /**
    * @class
@@ -74,6 +77,11 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
 
     this.on('enterFullScreen', () => {
       this.toggleFullscreen(true);
+
+      window.setTimeout(() => {
+        // Workaround. It was reported that waiting in main in first call does not always suffice, so trigger anew.
+        this.toggleFullscreen(true);
+      }, FULL_SCREEN_DELAY_LARGE_MS);
     });
 
     this.on('exitFullScreen', () => {
