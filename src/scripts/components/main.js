@@ -22,6 +22,12 @@ const INDEX_OF_TASK_DESCRIPTION_PANE = 1;
 /** @constant {number} MIN_WIDTH_PANE_2_PX Minimum width for pane 2 (in pixels). */
 const MIN_WIDTH_PANE_2_PX = 200;
 
+/** @constant {number} SLIDEABLE_PAGES_MIN_WIDTH_PANE_2_PERCENT Minimum width for pane 2 (in percent). */
+const SLIDEABLE_PAGES_MIN_WIDTH_PANE_2_PERCENT = 20;
+
+/** @constant {number} SLIDEABLE_PAGES_DEFAULT_WIDTH_PANE_2_PERCENT Default width for pane 2 (in percent). */
+const SLIDEABLE_PAGES_DEFAULT_WIDTH_PANE_2_PERCENT = 70;
+
 export default class Main {
 
   /**
@@ -123,8 +129,8 @@ export default class Main {
     this.resizableArea = new ResizableArea({
       dictionary: params.dictionary,
       globals: params.globals,
-      minValue: 20,
-      position: 75,
+      minValue: SLIDEABLE_PAGES_MIN_WIDTH_PANE_2_PERCENT,
+      position: SLIDEABLE_PAGES_DEFAULT_WIDTH_PANE_2_PERCENT,
     });
 
     this.resizableArea.setPane1(this.pages.getDOM());
