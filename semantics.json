@@ -27,18 +27,25 @@
           "optional": true,
           "enterMode": "div",
           "tags": [
+            "sub",
+            "sup",
             "strong",
             "em",
+            "p",
+            "code",
             "u",
+            "del",
             "a",
             "ul",
             "ol",
-            "h2",
-            "h3",
             "hr",
             "pre",
             "code"
-          ]
+          ],
+          "font": {
+            "color": true,
+            "size": true
+          }
         },
         {
           "name": "usePreviousBoardContents",
