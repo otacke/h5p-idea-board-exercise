@@ -1,7 +1,6 @@
 import { addMixins, extend, formatLanguageCode } from '@services/util.js';
 import { getSemanticsDefaults } from '@services/util-h5p.js';
 import Dictionary from '@services/dictionary.js';
-import Globals from '@services/globals.js';
 import Main from '@components/main.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
@@ -40,7 +39,7 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
     this.dictionary = new Dictionary();
     this.dictionary.fill({ l10n: this.params.l10n, a11y: this.params.a11y });
 
-    this.globals = new Globals();
+    this.globals = new Map();
     this.globals.set('mainInstance', this);
     this.globals.set('contentId', this.contentId);
     this.globals.set('isFullscreenSupported', this.isRoot() && H5P.fullscreenSupported);
