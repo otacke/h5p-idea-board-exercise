@@ -51,7 +51,7 @@ export default class QuestionTypeContract {
 
     return {
       statement: xAPIEvent.data.statement,
-      children: this.main.getXAPIData()
+      children: this.main.getXAPIData(),
     };
   }
 
@@ -71,7 +71,7 @@ export default class QuestionTypeContract {
     }
 
     return {
-      main: this.main.getCurrentState()
+      main: this.main.getCurrentState(),
     };
   }
 

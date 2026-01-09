@@ -15,7 +15,7 @@ export default class Board {
   constructor(params = {}, callbacks = {}) {
     this.params = params;
     this.callbacks = extend({
-      onCompleted: () => {}
+      onCompleted: () => {},
     }, callbacks);
 
     this.score = 0;
@@ -107,7 +107,7 @@ export default class Board {
       this.params.globals.get('contentId'),
       undefined,
       true,
-      { previousState }
+      { previousState },
     );
 
     if (!this.instance) {
@@ -128,11 +128,11 @@ export default class Board {
     }
 
     this.bubbleUp(
-      this.instance, 'resize', this.params.globals.get('mainInstance')
+      this.instance, 'resize', this.params.globals.get('mainInstance'),
     );
 
     this.bubbleDown(
-      this.params.globals.get('mainInstance'), 'resize', [this.instance]
+      this.params.globals.get('mainInstance'), 'resize', [this.instance],
     );
 
     callOnceVisible(this.dom, () => {
@@ -228,7 +228,7 @@ export default class Board {
    */
   getFirstFocusableChild() {
     const focusableElementsString = [
-      '.h5p-idea-board-element-interactor'
+      '.h5p-idea-board-element-interactor',
     ].join(', ');
 
     return [...this.dom.querySelectorAll(focusableElementsString)]
@@ -251,7 +251,7 @@ export default class Board {
         this.completed.add({
           type: eventName,
           subContentId: data.subContentId,
-          machineName: data.machineName
+          machineName: data.machineName,
         });
 
         this.checkCompletion();

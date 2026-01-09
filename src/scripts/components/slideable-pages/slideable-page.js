@@ -84,7 +84,7 @@ export default class SlideablePage {
    */
   getCurrentState() {
     return {
-      hasBeenVisible: this.hasBeenVisible()
+      hasBeenVisible: this.hasBeenVisible(),
     };
   }
 

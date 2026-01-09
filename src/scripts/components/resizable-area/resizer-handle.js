@@ -20,7 +20,7 @@ export default class ResizerHandle {
     this.callbacks = extend({
       onStarted: () => {},
       onResized: () => {},
-      onEnded: () => {}
+      onEnded: () => {},
     }, callbacks);
 
     this.isResizing = false;

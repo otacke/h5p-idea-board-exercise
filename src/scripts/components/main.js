@@ -41,14 +41,14 @@ export default class Main {
         currentPageIndex: 0,
         isShowingSummary: false,
         wereAllBoardsCompleted: false,
-        completedBoardIndices: []
+        completedBoardIndices: [],
       },
     }, params);
 
     this.callbacks = extend({
       onProgressed: () => {},
       onCompleted: () => {},
-      onClickButtonFullscreen: () => {}
+      onClickButtonFullscreen: () => {},
     }, callbacks);
 
     this.params.globals.set('read', (text) => {
@@ -76,8 +76,8 @@ export default class Main {
         },
         onClickButtonFullscreen: () => {
           this.callbacks.onClickButtonFullscreen();
-        }
-      }
+        },
+      },
     );
 
     const boardInstances = this.params.boards.map((boardParams, index) => {
@@ -86,21 +86,21 @@ export default class Main {
           dictionary: params.dictionary,
           globals: params.globals,
           boardParams: boardParams,
-          previousState: this.params.previousState.boards?.[index]
+          previousState: this.params.previousState.boards?.[index],
         },
         {
           onCompleted: () => {
             this.handleBoardCompleted(index);
-          }
-        }
+          },
+        },
       );
     });
 
     this.boards = new Boards(
       {
         globals: params.globals,
-        boards: boardInstances
-      }
+        boards: boardInstances,
+      },
     );
 
     this.pages = new SlideablePages(
@@ -122,8 +122,8 @@ export default class Main {
         },
         getBoard: (pageIndex) => {
           return this.boards.getBoard(pageIndex);
-        }
-      }
+        },
+      },
     );
 
     this.resizableArea = new ResizableArea({
@@ -161,7 +161,7 @@ export default class Main {
 
     // Confirmation Dialog
     this.confirmationDialog = new ConfirmationDialog({
-      globals: params.globals
+      globals: params.globals,
     });
     this.dom.append(this.confirmationDialog.getDOM());
   }
@@ -282,8 +282,8 @@ export default class Main {
       {
         onConfirmed: () => {
           this.cloneBoardFromTo(this.pages.getCurrentPageIndex() - 1, this.pages.getCurrentPageIndex());
-        }
-      }
+        },
+      },
     );
 
     this.confirmationDialog.show();
@@ -356,7 +356,7 @@ export default class Main {
       left: left, right: right,
       now: currentPageIndex + 1,
       max: this.pages.getLength(),
-      text: this.isShowingSummary ? this.params.dictionary.get('l10n.summary') : ''
+      text: this.isShowingSummary ? this.params.dictionary.get('l10n.summary') : '',
     });
 
     this.navigationBar.toggleProgressTextMode(this.isShowingSummary);
@@ -417,7 +417,7 @@ export default class Main {
       wereAllBoardsCompleted: this.wereAllBoardsCompleted,
       completedBoardIndices: Array.from(this.completedBoardIndices),
       pages: this.pages.getCurrentState(),
-      boards: this.boards.getCurrentState()
+      boards: this.boards.getCurrentState(),
     };
   }
 

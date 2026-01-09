@@ -13,20 +13,20 @@ export default class SlideablePages {
   constructor(params = {}, callbacks = {}) {
     this.params = extend({
       previousState: {
-        pages: new Array(params.boardDOMs.length).fill({})
-      }
+        pages: new Array(params.boardDOMs.length).fill({}),
+      },
     }, params);
 
     this.callbacks = extend({
       onProgressed: () => {},
       onTransitionEnded: () => {},
-      getBoard: () => {}
+      getBoard: () => {},
     }, callbacks);
 
     this.pages = params.boardDOMs.map((boardDOM, index) => {
       return new SlideablePage({
         dom: boardDOM,
-        previousState: this.params.previousState.pages[index] ?? {}
+        previousState: this.params.previousState.pages[index] ?? {},
       });
     });
     this.hasSlideEffect = true;
@@ -269,7 +269,7 @@ export default class SlideablePages {
    */
   getCurrentState() {
     return {
-      pages: this.pages.map((page) => page.getCurrentState())
+      pages: this.pages.map((page) => page.getCurrentState()),
     };
   }
 

@@ -6,7 +6,7 @@ export default class ProgressIndicator {
     this.params = extend({
       min: 1,
       max: 1,
-      now: 1
+      now: 1,
     }, params);
 
     this.min = this.params.min;

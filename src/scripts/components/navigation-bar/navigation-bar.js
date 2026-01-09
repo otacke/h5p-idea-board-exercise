@@ -20,7 +20,7 @@ export default class NavigationBar {
       onClickButtonLeft: () => {},
       onClickButtonRight: () => {},
       onClickButtonClonePreviousSlide: () => {},
-      onClickButtonFullscreen: () => {}
+      onClickButtonFullscreen: () => {},
     }, callbacks);
 
     this.buttons = {};
@@ -72,7 +72,7 @@ export default class NavigationBar {
     dom.append(buttonsContainerLeft);
 
     this.progressIndicator = new ProgressIndicator({
-      dictionary: this.params.dictionary
+      dictionary: this.params.dictionary,
     });
     dom.append(this.progressIndicator.getDOM());
 
@@ -88,16 +88,16 @@ export default class NavigationBar {
         },
         classes: [
           'h5p-idea-board-button',
-          'h5p-idea-board-button-left'
+          'h5p-idea-board-button-left',
         ],
         disabled: true,
-        type: 'pulse'
+        type: 'pulse',
       },
       {
         onClick: () => {
           this.callbacks.onClickButtonLeft();
-        }
-      }
+        },
+      },
     );
     buttonsContainerLeft.append(buttons.left.getDOM());
 
@@ -109,16 +109,16 @@ export default class NavigationBar {
         },
         classes: [
           'h5p-idea-board-button',
-          'h5p-idea-board-button-right'
+          'h5p-idea-board-button-right',
         ],
         disabled: true,
-        type: 'pulse'
+        type: 'pulse',
       },
       {
         onClick: () => {
           this.callbacks.onClickButtonRight();
-        }
-      }
+        },
+      },
     );
     buttonsContainerLeft.append(buttons.right.getDOM());
 
@@ -132,12 +132,12 @@ export default class NavigationBar {
         },
         classes: [
           'h5p-idea-board-button',
-          'h5p-idea-board-button-clone-previous'
-        ]
+          'h5p-idea-board-button-clone-previous',
+        ],
       }, {
         onClick: () => {
           this.callbacks.onClickButtonClonePreviousSlide();
-        }
+        },
       });
 
       buttonsContainerRight.append(buttons.clonePreviousSlide.getDOM());
@@ -156,14 +156,14 @@ export default class NavigationBar {
           classes: [
             'h5p-idea-board-button',
             'h5p-idea-board-button-fullscreen',
-            'enter-fullscreen'
-          ]
+            'enter-fullscreen',
+          ],
         },
         {
           onClick: () => {
             this.callbacks.onClickButtonFullscreen();
-          }
-        }
+          },
+        },
       );
 
       buttonsContainerRight.append(buttons.fullscreen.getDOM());
@@ -224,7 +224,7 @@ export default class NavigationBar {
     }
     else if (event.code === 'End') {
       this.moveButtonFocus(
-        Object.keys(this.buttons).length - 1 - this.currentButtonIndex
+        Object.keys(this.buttons).length - 1 - this.currentButtonIndex,
       );
     }
     else {
@@ -342,7 +342,7 @@ export default class NavigationBar {
     }
 
     this.progressIndicator.update({
-      now: params.now, min: params.min, max: params.max, text: params.text
+      now: params.now, min: params.min, max: params.max, text: params.text,
     });
   }
 

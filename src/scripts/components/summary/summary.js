@@ -32,7 +32,7 @@ export default class Summary {
       this.params.globals.get('contentId'),
       H5P.jQuery(this.dom),
       true,
-      {}
+      {},
     );
 
     if (!this.instance) {
@@ -40,11 +40,11 @@ export default class Summary {
     }
 
     this.bubbleUp(
-      this.instance, 'resize', this.params.globals.get('mainInstance')
+      this.instance, 'resize', this.params.globals.get('mainInstance'),
     );
 
     this.bubbleDown(
-      this.params.globals.get('mainInstance'), 'resize', [this.instance]
+      this.params.globals.get('mainInstance'), 'resize', [this.instance],
     );
   }
 

@@ -70,8 +70,8 @@ export default class IdeaBoardExercise extends H5P.EventDispatcher {
         },
         onClickButtonFullscreen: () => {
           this.handleFullscreenClicked();
-        }
-      }
+        },
+      },
     );
 
     this.on('enterFullScreen', () => {

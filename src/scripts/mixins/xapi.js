@@ -32,7 +32,7 @@ export default class XAPI {
         this.getMaxScore(), // Question Type Contract mixin
         this,
         true,
-        this.getScore() === this.getMaxScore()
+        this.getScore() === this.getMaxScore(),
       );
     }
 
@@ -83,7 +83,7 @@ export default class XAPI {
 
     extend(
       xAPIEvent.getVerifiedStatementValue(['object', 'definition', 'extensions']),
-      { 'http://id.tincanapi.com/extension/ending-point': index }
+      { 'http://id.tincanapi.com/extension/ending-point': index },
     );
 
     this.trigger(xAPIEvent);

@@ -63,8 +63,8 @@ export default class ResizableArea {
         },
         onEnded: () => {
           this.dom.classList.remove('is-resizing');
-        }
-      }
+        },
+      },
     );
 
     const { dom, pane1, pane2 } = this.buildDOM({ uuid1, uuid2 });

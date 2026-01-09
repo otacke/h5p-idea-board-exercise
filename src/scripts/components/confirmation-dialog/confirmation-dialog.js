@@ -52,7 +52,7 @@ export default class ConfirmationDialog {
 
     callbacks = extend({
       onConfirmed: () => {},
-      onCanceled: () => {}
+      onCanceled: () => {},
     }, callbacks);
 
     // Clean up old dialog
